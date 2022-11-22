@@ -1,6 +1,6 @@
 package character;
 
-import character.Hero;
+import Hero;
 
 public interface Effect_to_Hero {
 
