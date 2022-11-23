@@ -46,8 +46,8 @@ public class WorldMapCreator {
         this.random = new Random(seed);
     }
 
-    public WorldMap create(int x , int y) {
-        WorldMap wm = new WorldMap(x, y);
+    public WorldMap create() {
+        WorldMap wm = new WorldMap(rows, cols);
         int b_count = 0;
         int c_count = 0;
         int k_count = 0;

@@ -76,4 +76,29 @@ public class WorldMap {
         return re;
     }
 
+    public static void main(String[] args) {
+        WorldMapCreator wm = new WorldMapCreator(8,8,0.1,0.1,0.1,2);
+        WorldMap world =  wm.create();
+        System.out.println(world.toString(7,0));
+    }
+    // Sample Output:
+
+    // +---+---+---+---+---+---+---+---+
+    // | M | M | W | M | M | W | M | M |
+    // +---+---+---+---+---+---+---+---+
+    // | P | P | W | P | P | W | P | P |
+    // +---+---+---+---+---+---+---+---+
+    // | P | B | W | K | P | W | B | P |
+    // +---+---+---+---+---+---+---+---+
+    // | P | B | W | P | P | W | P | P |
+    // +---+---+---+---+---+---+---+---+
+    // | P | B | W | P | P | W | P | C |
+    // +---+---+---+---+---+---+---+---+
+    // | P | P | W | P | P | W | P | P |
+    // +---+---+---+---+---+---+---+---+
+    // | P | P | W | C | C | W | B | P |
+    // +---+---+---+---+---+---+---+---+
+    // |*H*| N | W | N | N | W | N | N |
+    // +---+---+---+---+---+---+---+---+
+    // You are in a market. You can buy or sell items here.
 }
