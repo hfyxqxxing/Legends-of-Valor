@@ -1,6 +1,6 @@
-package character;
+package legendsofvalor.character;
 
 public class Monster {
 
-    Hero(){}
+    // Hero(){}
 }

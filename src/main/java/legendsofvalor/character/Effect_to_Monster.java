@@ -1,4 +1,4 @@
-package character;
+package legendsofvalor.character;
 
 public interface Effect_to_Monster {
 

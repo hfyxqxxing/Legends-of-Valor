@@ -1,16 +1,16 @@
-package item;
+package legendsofvalor.item;
 
-import character.Hero;
+import legendsofvalor.character.Hero;
 
-public class Potion_Power extends Potion{
-    Potion_Power(String name, int level, int price, int sale, int powerUp){
-        super(name,level,price,sale,powerUp);
+public class Potion_Power extends Potion {
+    Potion_Power(String name, int level, int price, int sale, int powerUp) {
+        super(name, level, price, sale, powerUp);
         function = "Power";
 
     }
 
     @Override
     public void effect(Hero hero) {
-        hero.getStrength().increase(powerUp);
+        // hero.getStrength().increase(powerUp);legendsofvalor.
     }
 }

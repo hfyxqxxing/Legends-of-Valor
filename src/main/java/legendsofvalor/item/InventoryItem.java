@@ -1,7 +1,7 @@
 /*
  * This is an interface that defines a special kinds of item, the Inventory will use this interface to store the item.
  */
-package item;
+package legendsofvalor.item;
 
 public interface InventoryItem {
 

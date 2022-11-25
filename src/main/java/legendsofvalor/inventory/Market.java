@@ -1,10 +1,10 @@
-package inventory;
+package legendsofvalor.inventory;
 
-import character.Hero;
+import legendsofvalor.character.Hero;
 
 public class Market {
 
-    public void shopping(Hero hero){
+    public void shopping(Hero hero) {
 
     }
 }

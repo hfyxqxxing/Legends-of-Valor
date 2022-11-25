@@ -1,12 +1,11 @@
 /*
  * Potion is a subclass of Item, and it is also a MarketItem, InventoryItem
  */
-package item;
+package legendsofvalor.item;
 
 import java.util.ArrayList;
 
-import character.Effect_to_Hero;
-import character.Hero;
+import legendsofvalor.character.*;
 
 public abstract class Potion extends Item implements Effect_to_Hero {
     protected int powerUp;
@@ -43,18 +42,15 @@ public abstract class Potion extends Item implements Effect_to_Hero {
     }
 
     public String toString() {
-        return "Name: " + getName() + " Level: " + getLevel() + " Price: "
-                + getPrice() + " Power Up: " + getPowerUp() ;
+        return "Name: " + getName() + " Level: " + getLevel() + " Price: " + getPrice() + " Power Up: " + getPowerUp();
     }
 
     public String getMarketHeader() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s", "<Potion>", "Level", "Price", "Power Up",
-                "Boosts");
+        return String.format("%-20s %-10s %-10s %-10s %-10s", "<Potion>", "Level", "Price", "Power Up", "Boosts");
     }
 
     public String getMarketBody() {
-        return String.format("%-20s %-10s %-10s %-10s", getName(), getLevel(), getPrice(),
-                getPowerUp());
+        return String.format("%-20s %-10s %-10s %-10s", getName(), getLevel(), getPrice(), getPowerUp());
     }
 
     public String getInventoryHeader() {

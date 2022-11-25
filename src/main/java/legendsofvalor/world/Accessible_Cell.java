@@ -1,16 +1,15 @@
-package world;
+package legendsofvalor.world;
 
-import character.Hero;
-import character.Monster;
+import legendsofvalor.character.Hero;
+import legendsofvalor.character.Monster;
 
-public abstract class Accessible_Cell implements WorldCell{
+public abstract class Accessible_Cell implements WorldCell {
 
     protected char symbol;
     protected String name;
 
-    protected Hero hero  = null;
+    protected Hero hero = null;
     protected Monster monster = null;
-
 
 
     @Override
@@ -50,18 +49,15 @@ public abstract class Accessible_Cell implements WorldCell{
 
     @Override
     public String toString() {
-        String result = "WorldCell{" +
-                "symbol=" + symbol +
-                ", name='" + name + '\'' +
-                ", isAccessible=" + "true";
-        if (hero == null){
-            result = result + ", present Hero is " + hero.getName();
-        }else {
+        String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "true";
+        if (hero == null) {
+            result = result + ", present Hero is ";// + hero.getName();
+        } else {
             result = result + ", There is no Hero here";
         }
-        if (monster == null){
-            result = result +", present Monster is " + monster.getName();
-        }else {
+        if (monster == null) {
+            result = result + ", present Monster is ";// + monster.getName();
+        } else {
             result = result + ", There is no Monster here";
         }
 

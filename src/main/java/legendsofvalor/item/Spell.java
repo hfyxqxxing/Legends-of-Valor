@@ -4,19 +4,18 @@
  * The price and sale price of the spell should change according to the usedCount.
  * If the usedCount is equal to the quantity, the price and sale price should be 0.
  */
-package item;
+package legendsofvalor.item;
 
-import character.*;
+import legendsofvalor.character.*;
 
-public abstract class Spell extends Item{
+public abstract class Spell extends Item {
     protected int damage;
     protected int manaCost;
     protected int quantity;
     protected int usedCount;
     protected String spellType;
 
-    public Spell(String name, int level, int price, int sale, int damage, int manaCost,
-            int quantity) {
+    public Spell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale);
         this.damage = damage;
         this.manaCost = manaCost;
@@ -98,40 +97,30 @@ public abstract class Spell extends Item{
     }
 
     public String toString() {
-        return "Name: " + getName() + " Level: " + getLevel() + " Price: "
-                + getPrice() + " Damage: " + getDamage() + " Mana Cost: " + getManaCost() + " Quantity: "
-                + getQuantity() + " Used Count: " + getUsedCount() + " Spell Type: " + getSpellType();
+        return "Name: " + getName() + " Level: " + getLevel() + " Price: " + getPrice() + " Damage: " + getDamage() + " Mana Cost: " + getManaCost() + " Quantity: " + getQuantity() + " Used Count: " + getUsedCount() + " Spell Type: " + getSpellType();
     }
 
     public String getMarketHeader() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s %-10s %-10s", "<Spell>", "Level", "Price", "Damage",
-                "ManaCost",
-                "SpellType", "Used/Quantity");
+        return String.format("%-20s %-10s %-10s %-10s %-10s %-10s %-10s", "<Spell>", "Level", "Price", "Damage", "ManaCost", "SpellType", "Used/Quantity");
     }
 
     public String getMarketBody() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s %-10s %-10s", getName(), getLevel(), getPrice(),
-                getDamage(),
-                getManaCost(), getSpellType(), getUsedCount() + "/" + getQuantity());
+        return String.format("%-20s %-10s %-10s %-10s %-10s %-10s %-10s", getName(), getLevel(), getPrice(), getDamage(), getManaCost(), getSpellType(), getUsedCount() + "/" + getQuantity());
     }
 
     public String getInventoryHeader() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s", "<Spell>", "Sale", "Damage", "ManaCost", "SpellType",
-                "Used/Quantity");
+        return String.format("%-20s %-10s %-10s %-10s %-10s", "<Spell>", "Sale", "Damage", "ManaCost", "SpellType", "Used/Quantity");
     }
 
     public String getInventoryBody() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s", getName(), getSale(), getDamage(), getManaCost(),
-                getSpellType(), getUsedCount() + "/" + getQuantity());
+        return String.format("%-20s %-10s %-10s %-10s %-10s", getName(), getSale(), getDamage(), getManaCost(), getSpellType(), getUsedCount() + "/" + getQuantity());
     }
 
     public String getSpellHeader() {
-        return String.format("%-20s %-10s %-10s %-10s", "<Spell>", "Damage", "ManaCost", "SpellType",
-                "Used/Quantity");
+        return String.format("%-20s %-10s %-10s %-10s", "<Spell>", "Damage", "ManaCost", "SpellType", "Used/Quantity");
     }
 
     public String getSpellBody() {
-        return String.format("%-20s %-10s %-10s %-10s", getName(), getDamage(), getManaCost(),
-                getSpellType(), getUsedCount() + "/" + getQuantity());
+        return String.format("%-20s %-10s %-10s %-10s", getName(), getDamage(), getManaCost(), getSpellType(), getUsedCount() + "/" + getQuantity());
     }
 }

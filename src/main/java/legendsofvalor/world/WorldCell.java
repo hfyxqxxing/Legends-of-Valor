@@ -3,13 +3,13 @@
  * Only Symbol will be printed in the world map.
  */
 
-package world;
+package legendsofvalor.world;
 
 public interface WorldCell {
 
-    char getSymbol() ;
+    char getSymbol();
 
-    String getName() ;
+    String getName();
 
     boolean isAccessible();
 

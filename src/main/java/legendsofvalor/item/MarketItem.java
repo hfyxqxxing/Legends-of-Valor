@@ -1,7 +1,7 @@
 /*
  * Interface for items that can be listed on the market
  */
-package item;
+package legendsofvalor.item;
 
 public interface MarketItem {
     public abstract int getPrice();

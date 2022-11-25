@@ -1,16 +1,16 @@
-package item;
+package legendsofvalor.item;
 
-import character.Hero;
+import legendsofvalor.character.Hero;
 
-public class Potion_Dexterity extends Potion{
-    Potion_Dexterity(String name, int level, int price, int sale, int powerUp){
-        super(name,level,price,sale,powerUp);
+public class Potion_Dexterity extends Potion {
+    Potion_Dexterity(String name, int level, int price, int sale, int powerUp) {
+        super(name, level, price, sale, powerUp);
         function = "Agility";
 
     }
 
     @Override
     public void effect(Hero hero) {
-        hero.getDexterity().increase(powerUp);
+        // hero.getDexterity().increase(powerUp);
     }
 }
