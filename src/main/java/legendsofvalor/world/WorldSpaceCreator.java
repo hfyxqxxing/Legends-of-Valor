@@ -1,10 +1,10 @@
 /*
- * This is the World Space factory class. 
+ * This is the World Space factory class.
  * The create method accept a string indicate the World Space type
  * and creates corresponding WorldSpace object.
  */
 
-package world;
+package legendsofvalor.world;
 
 public class WorldSpaceCreator {
     public static WorldCell create(String spaceTypeName) {

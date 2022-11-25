@@ -1,10 +1,10 @@
 /*
  * Armor is a subclass of Item, and it is also a MarketItem, InventoryItem
  */
-package item;
+package legendsofvalor.item;
 
-import character.Effect_to_Hero;
-import character.Hero;
+import legendsofvalor.character.Effect_to_Hero;
+import legendsofvalor.character.Hero;
 
 public class Armor extends Item implements Effect_to_Hero {
     private int defense;
@@ -16,7 +16,7 @@ public class Armor extends Item implements Effect_to_Hero {
 
     @Override
     public void effect(Hero hero) {
-        hero.setArmor(this);
+        // hero.setArmor(this);
     }
 
     public int getDefense() {
@@ -35,8 +35,7 @@ public class Armor extends Item implements Effect_to_Hero {
     }
 
     public String toString() {
-        return "Name: " + getName() + " Level: " + getLevel() + " Defense: "
-                + getDefense() + " Price: " + getPrice();
+        return "Name: " + getName() + " Level: " + getLevel() + " Defense: " + getDefense() + " Price: " + getPrice();
     }
 
     public String getMarketHeader() {

@@ -3,9 +3,9 @@
  * including weapons, armor, and potions
  */
 
-package item;
+package legendsofvalor.item;
 
-public abstract class Item implements InventoryItem,MarketItem {
+public abstract class Item implements InventoryItem, MarketItem {
     private String name;
 
     private int level;

@@ -1,6 +1,6 @@
-package world;
+package legendsofvalor.world;
 
-public abstract class InAccessible_Cell implements WorldCell{
+public abstract class InAccessible_Cell implements WorldCell {
     protected char symbol;
     protected String name;
 
@@ -21,10 +21,7 @@ public abstract class InAccessible_Cell implements WorldCell{
 
     @Override
     public String toString() {
-        String result = "WorldCell{" +
-                "symbol=" + symbol +
-                ", name='" + name + '\'' +
-                ", isAccessible=" + "false" + "}";
+        String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "false" + "}";
         return result;
     }
 }

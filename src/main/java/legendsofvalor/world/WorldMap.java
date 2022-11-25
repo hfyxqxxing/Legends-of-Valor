@@ -1,6 +1,6 @@
-package world;
+package legendsofvalor.world;
 
-import character.Hero;
+import legendsofvalor.character.Hero;
 
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,6 +10,7 @@ public class WorldMap {
     private int rows;
     private int cols;
     private WorldCell[][] map;
+
     public WorldMap(int row, int col) {
         this.rows = row;
         this.cols = col;
@@ -51,7 +52,7 @@ public class WorldMap {
         return map[heroX][heroY].getSymbol() == ('N');
     }
 
-    /**Need changes*/
+    /** Need changes */
     public String toString(int heroX, int heroY) {
         String re = "";
         re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
@@ -68,7 +69,7 @@ public class WorldMap {
             re += "\n";
             re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
         }
-        if (isInANexus(heroX,heroY)) {
+        if (isInANexus(heroX, heroY)) {
             re += "You are in a market. You can buy or sell items here.\n";
         } else {
             re += "You are not in a market. You can move around the map.\n";
@@ -77,9 +78,9 @@ public class WorldMap {
     }
 
     public static void main(String[] args) {
-        WorldMapCreator wm = new WorldMapCreator(8,8,0.1,0.1,0.1,2);
-        WorldMap world =  wm.create();
-        System.out.println(world.toString(7,0));
+        WorldMapCreator wm = new WorldMapCreator(8, 8, 0.1, 0.1, 0.1, 2);
+        WorldMap world = wm.create();
+        System.out.println(world.toString(7, 0));
     }
     // Sample Output:
 

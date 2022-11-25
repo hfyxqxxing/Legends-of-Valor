@@ -2,10 +2,10 @@
  * Weapon is a subclass of Item, and it is also a MarketItem, InventoryItem
  */
 
-package item;
+package legendsofvalor.item;
 
-import character.Effect_to_Hero;
-import character.Hero;
+import legendsofvalor.character.Effect_to_Hero;
+import legendsofvalor.character.Hero;
 
 public class Weapon extends Item implements Effect_to_Hero {
 
@@ -20,8 +20,8 @@ public class Weapon extends Item implements Effect_to_Hero {
 
     @Override
     public void effect(Hero hero) {
-        /**This should be implemented in hero, adding or subsituting the weapon of hero*/
-//        hero.equip_weapon(this);
+        /** This should be implemented in hero, adding or subsituting the weapon of hero */
+        //        hero.equip_weapon(this);
         System.out.println("Hero equipped a weapon");
     }
 
@@ -52,8 +52,7 @@ public class Weapon extends Item implements Effect_to_Hero {
     }
 
     public String toString() {
-        return "Name: " + getName() + " Level: " + getLevel() + " Damage: "
-                + getDamage() + " Price: " + getPrice() + " Hands: " + getHands();
+        return "Name: " + getName() + " Level: " + getLevel() + " Damage: " + getDamage() + " Price: " + getPrice() + " Hands: " + getHands();
     }
 
     public String getMarketHeader() {
@@ -61,8 +60,7 @@ public class Weapon extends Item implements Effect_to_Hero {
     }
 
     public String getMarketBody() {
-        return String.format("%-20s %-10s %-10s %-10s %-10s", getName(), getLevel(), getPrice(), getDamage(),
-                getHands());
+        return String.format("%-20s %-10s %-10s %-10s %-10s", getName(), getLevel(), getPrice(), getDamage(), getHands());
     }
 
     public String getInventoryHeader() {
