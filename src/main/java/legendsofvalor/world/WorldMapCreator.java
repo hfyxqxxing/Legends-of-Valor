@@ -1,6 +1,6 @@
 package legendsofvalor.world;
 
-import javafx.util.Pair;
+// import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +15,7 @@ public class WorldMapCreator {
     private int rows;
 
     private Random random;
-    private ArrayList<Pair<Integer, Integer>> plains = new ArrayList<>();
+    // private ArrayList<Pair<Integer, Integer>> plains = new ArrayList<>();
 
 
     public WorldMapCreator() {
@@ -80,26 +80,26 @@ public class WorldMapCreator {
                     k_count++;
                 } else {
                     wm.setMap(i, j, WorldSpaceCreator.create("Plain"));
-                    plains.add(new Pair<>(i, j));
+                    // plains.add(new Pair<>(i, j));
                 }
             }
         }
-        if (plains.isEmpty()) {
-            System.out.println("All special places. Not available map");
-            return wm;
-        }
-        Collections.shuffle(plains);
+        // if (plains.isEmpty()) {
+        //     System.out.println("All special places. Not available map");
+        //     return wm;
+        // }
+        // Collections.shuffle(plains);
 
-        if (b_count == 0) {
-            Pair<Integer, Integer> position = plains.remove(0);
-            wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Bush"));
-        } else if (c_count == 0) {
-            Pair<Integer, Integer> position = plains.remove(0);
-            wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Cave"));
-        } else if (k_count == 0) {
-            Pair<Integer, Integer> position = plains.remove(0);
-            wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Koulou"));
-        }
+        // if (b_count == 0) {
+        //     Pair<Integer, Integer> position = plains.remove(0);
+        //     wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Bush"));
+        // } else if (c_count == 0) {
+        //     Pair<Integer, Integer> position = plains.remove(0);
+        //     wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Cave"));
+        // } else if (k_count == 0) {
+        //     Pair<Integer, Integer> position = plains.remove(0);
+        //     wm.setMap(position.getKey(), position.getValue(), WorldSpaceCreator.create("Koulou"));
+        // }
         return wm;
     }
 }
