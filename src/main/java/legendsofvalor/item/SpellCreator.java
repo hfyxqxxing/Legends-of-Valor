@@ -9,7 +9,7 @@ package legendsofvalor.item;
 public class SpellCreator {
 
     public static Spell create(String type, String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
-        if (type.equalsIgnoreCase("fire")) {
+        if (type.equalsIgnoreCase("Fire")) {
             return new FireSpell(name, level, price, sale, damage, manaCost, quantity);
         } else if (type.equalsIgnoreCase("Ice")) {
             return new IceSpell(name, level, price, sale, damage, manaCost, quantity);
