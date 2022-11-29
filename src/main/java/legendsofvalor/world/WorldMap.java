@@ -1,5 +1,6 @@
 package legendsofvalor.world;
 
+import javafx.geometry.Pos;
 import legendsofvalor.character.Hero;
 
 import java.util.Collections;
@@ -41,25 +42,43 @@ public class WorldMap {
         return this.map[x][y];
     }
 
-    public void setMap(int x, int y, WorldCell value) {
+    public void setMap(Position position, WorldCell value) {
+        int x = position.getX();
+        int y = position.getY();
         if (x >= this.rows || y >= this.cols || x < 0 || y < 0)
             return;
         this.map[x][y] = value;
     }
 
+    /** The method to get the lane*/
+    public int getLane(Position pos){
+        int y = pos.getY();
+        int count = 1;
+        if (y % 3 == 2){
+            System.out.println("This is an inaccessible position, not a Lane");
+            return -1;
+        }
+        while (true){
+            if (y < count*3-1 ){
+                return count-1;
+            }
+            count++;
+        }
+    }
 
-    public boolean isInANexus(int heroX, int heroY) {
-        return map[heroX][heroY].getSymbol() == ('N');
+
+    public boolean isInANexus(Position position) {
+        return map[position.getX()][position.getY()].getSymbol() == ('N');
     }
 
     /** Need changes */
-    public String toString(int heroX, int heroY) {
+    public String toString(Position position) {
         String re = "";
         re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
         for (int i = 0; i < this.cols; i++) {
             re += "|";
             for (int j = 0; j < this.rows; j++) {
-                if (i == heroX && j == heroY) {
+                if (i == position.getX() && j == position.getY()) {
                     re += "*H*|";
                 } else {
                     re += " " + this.map[i][j].getSymbol() + " |";
@@ -69,7 +88,7 @@ public class WorldMap {
             re += "\n";
             re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
         }
-        if (isInANexus(heroX, heroY)) {
+        if (isInANexus(position)) {
             re += "You are in a market. You can buy or sell items here.\n";
         } else {
             re += "You are not in a market. You can move around the map.\n";
@@ -80,7 +99,7 @@ public class WorldMap {
     public static void main(String[] args) {
         WorldMapCreator wm = new WorldMapCreator(8, 8, 0.1, 0.1, 0.1, 2);
         WorldMap world = wm.create();
-        System.out.println(world.toString(7, 0));
+        System.out.println(world.toString(new Position(7,0)));
     }
     // Sample Output:
 
