@@ -4,11 +4,11 @@ import legendsofvalor.character.Hero;
 import legendsofvalor.market.Market;
 import legendsofvalor.market.MarketCreator;
 
-public class Cell_Nexus extends AccessibleCell {
+public class CellNexus extends AccessibleCell {
 
     private Market market;
 
-    public Cell_Nexus() {
+    public CellNexus() {
         this.symbol = 'N';
         this.name = "Nexus";
         market = MarketCreator.create();

@@ -3,8 +3,8 @@ package legendsofvalor.world;
 import legendsofvalor.character.Effect_to_Hero;
 import legendsofvalor.character.Hero;
 
-public class Cell_Koulou extends Accessible_Cell implements Effect_to_Hero {
-        Cell_Koulou() {
+public class CellKoulou extends AccessibleCell implements Effect_to_Hero {
+        CellKoulou() {
                 this.symbol = 'K';
                 this.name = "Koulou";
         }

@@ -3,9 +3,9 @@ package legendsofvalor.world;
 import legendsofvalor.character.Hero;
 
 
-public class Cell_Nexus_Monster extends Accessible_Cell {
+public class CellNexusMonster extends AccessibleCell {
 
-    public Cell_Nexus_Monster() {
+    public CellNexusMonster() {
         this.symbol = 'M';
         this.name = "Monster Nexus";
     }
