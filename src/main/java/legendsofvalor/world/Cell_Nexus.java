@@ -1,21 +1,20 @@
 package legendsofvalor.world;
 
 import legendsofvalor.character.Hero;
-import legendsofvalor.inventory.Market;
+import legendsofvalor.market.Market;
+import legendsofvalor.market.MarketCreator;
 
-public class Cell_Nexus extends Accessible_Cell {
+public class Cell_Nexus extends AccessibleCell {
 
     private Market market;
 
     public Cell_Nexus() {
         this.symbol = 'N';
         this.name = "Nexus";
-        market = new Market();
+        market = MarketCreator.create();
     }
 
-
-    public void shopping(Hero hero) {
-        market.shopping(hero);
+    public Market getMarket() {
+        return market;
     }
-
 }
