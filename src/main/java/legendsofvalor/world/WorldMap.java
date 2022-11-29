@@ -1,10 +1,7 @@
 package legendsofvalor.world;
 
-import javafx.geometry.Pos;
-import legendsofvalor.character.Hero;
 
 import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class WorldMap {
