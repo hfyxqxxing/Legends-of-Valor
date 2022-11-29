@@ -34,6 +34,14 @@ public abstract class AccessibleCell implements WorldCell {
     public Hero getHero() {
         return hero;
     }
+    public boolean hasHero(){
+        if (hero == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
 
     public void setHero(Hero hero) {
         this.hero = hero;
@@ -41,6 +49,14 @@ public abstract class AccessibleCell implements WorldCell {
 
     public Monster getMonster() {
         return monster;
+    }
+
+    public boolean hasMonster(){
+        if (monster == null){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     public void setMonster(Monster monster) {

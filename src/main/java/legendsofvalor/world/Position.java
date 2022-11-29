@@ -26,6 +26,10 @@ public class Position {
         return y;
     }
 
+    public Position changeto(int x, int y){
+        return new Position(this.x+x,this.y+y);
+    }
+
     public void setY(int y) {
         this.y = y;
     }

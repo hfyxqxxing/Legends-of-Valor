@@ -49,7 +49,7 @@ public class WorldMapCreator {
     }
 
     public WorldMap create() {
-        WorldMap wm = new WorldMap(rows, cols);
+        WorldMap wm = WorldMap.getInstance();
         int b_count = 0;
         int c_count = 0;
         int k_count = 0;

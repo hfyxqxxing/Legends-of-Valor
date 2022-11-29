@@ -15,4 +15,8 @@ public interface WorldCell {
 
     String toString();
 
+    boolean hasHero();
+
+    boolean hasMonster();
+
 }

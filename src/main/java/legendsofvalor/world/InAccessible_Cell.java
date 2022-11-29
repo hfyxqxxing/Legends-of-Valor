@@ -24,4 +24,14 @@ public abstract class InAccessible_Cell implements WorldCell {
         String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "false" + "}";
         return result;
     }
+
+    @Override
+    public boolean hasHero() {
+        return false;
+    }
+
+    @Override
+    public boolean hasMonster() {
+        return false;
+    }
 }
