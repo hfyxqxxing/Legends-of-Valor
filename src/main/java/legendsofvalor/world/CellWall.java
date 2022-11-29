@@ -1,8 +1,8 @@
 package legendsofvalor.world;
 
-public class Cell_Wall extends InAccessible_Cell {
+public class CellWall extends InAccessible_Cell {
 
-    Cell_Wall() {
+    CellWall() {
         this.symbol = 'W';
         this.name = "inaccessible";
     }

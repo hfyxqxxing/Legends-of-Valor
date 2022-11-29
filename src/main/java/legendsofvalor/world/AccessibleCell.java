@@ -3,7 +3,7 @@ package legendsofvalor.world;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 
-public abstract class Accessible_Cell implements WorldCell {
+public abstract class AccessibleCell implements WorldCell {
 
     protected char symbol;
     protected String name;

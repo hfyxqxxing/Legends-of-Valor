@@ -3,9 +3,9 @@ package legendsofvalor.world;
 import legendsofvalor.character.Effect_to_Hero;
 import legendsofvalor.character.Hero;
 
-public class Cell_Cave extends Accessible_Cell implements Effect_to_Hero {
+public class CellCave extends AccessibleCell implements Effect_to_Hero {
 
-    Cell_Cave() {
+    CellCave() {
         this.symbol = 'C';
         this.name = "Cave";
     }

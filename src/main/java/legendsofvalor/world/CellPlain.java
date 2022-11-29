@@ -1,8 +1,8 @@
 package legendsofvalor.world;
 
-public class Cell_Plain extends Accessible_Cell {
+public class CellPlain extends AccessibleCell {
 
-    public Cell_Plain() {
+    public CellPlain() {
         this.symbol = 'P';
         this.name = "Plain";
     }

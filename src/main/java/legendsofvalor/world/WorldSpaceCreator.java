@@ -10,19 +10,19 @@ public class WorldSpaceCreator {
     public static WorldCell create(String spaceTypeName) {
         switch (spaceTypeName) {
             case "Bush":
-                return new Cell_Bush();
+                return new CellBush();
             case "Cave":
-                return new Cell_Cave();
+                return new CellCave();
             case "Nexus":
-                return new Cell_Nexus();
+                return new CellNexus();
             case "Nexus_Monster":
-                return new Cell_Nexus_Monster();
+                return new CellNexusMonster();
             case "Plain":
-                return new Cell_Plain();
+                return new CellPlain();
             case "Wall":
-                return new Cell_Wall();
+                return new CellWall();
             case "Koulou":
-                return new Cell_Koulou();
+                return new CellKoulou();
             default:
                 return null;
         }
