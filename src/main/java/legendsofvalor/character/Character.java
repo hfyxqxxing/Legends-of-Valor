@@ -4,11 +4,14 @@
 
 package legendsofvalor.character;
 
+import javax.swing.text.Position;
+
 public abstract class Character {
     private Name name;
     private HP hp;
     private Level level;
     private Defense defense;
+    private Position position;
 
     public Character(Name name, HP hp, Level level, Defense defense) {
         this.name = name;
@@ -22,6 +25,14 @@ public abstract class Character {
         this.hp = new HP(hp);
         this.level = new Level(level);
         this.defense = new Defense(defense);
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public Name getName() {
