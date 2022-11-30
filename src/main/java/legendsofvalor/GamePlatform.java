@@ -75,15 +75,17 @@ public class GamePlatform {
             if (R % 8 == 0) {
                 generateMonsters();
             }
+            // print the map
+            System.out.println(WorldMap.getInstance());
             // hero's turn
             ArrayList<Hero> heros = WorldMap.getInstance().getHeroes();
             for (int i = 0; i < heros.size(); i++) {
-                // print the map
-                System.out.println(WorldMap.getInstance());
                 // do hero's turn
                 Hero curHero = heros.get(i);
                 ColorPrint.green("[Hero] " + curHero.getName().get() + "'s turn");
                 HeroView.view(curHero);
+                // print the map
+                System.out.println(WorldMap.getInstance());
                 // check win
                 if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
                     break;
