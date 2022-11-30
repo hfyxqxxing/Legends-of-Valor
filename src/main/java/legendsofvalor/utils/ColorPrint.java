@@ -17,8 +17,8 @@ public class ColorPrint {
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public static String Nexuspanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Nexuspanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return BluePanel("H M");
         } else if (hasmonster) {
             return BluePanel(" M ");
@@ -30,8 +30,8 @@ public class ColorPrint {
     }
 
 
-    public static String Bushpanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Bushpanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return GreenPanel("H M");
         } else if (hasmonster) {
             return GreenPanel(" M ");
@@ -43,8 +43,8 @@ public class ColorPrint {
     }
 
 
-    public static String Plainpanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Plainpanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return BrightgreenPanel("H M");
         } else if (hasmonster) {
             return BrightgreenPanel(" M ");
@@ -56,8 +56,8 @@ public class ColorPrint {
     }
 
 
-    public static String Cavepanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Cavepanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return YellowPanel("H M");
         } else if (hasmonster) {
             return YellowPanel(" M ");
@@ -69,8 +69,8 @@ public class ColorPrint {
     }
 
 
-    public static String Kouloupanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Kouloupanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return RedPanel("H M");
         } else if (hasmonster) {
             return RedPanel(" M ");
@@ -82,8 +82,8 @@ public class ColorPrint {
     }
 
 
-    public static String Wallpanel(boolean hashero,boolean hasmonster){
-        if (hashero && hasmonster){
+    public static String Wallpanel(boolean hashero, boolean hasmonster) {
+        if (hashero && hasmonster) {
             return BlackPanel("H M");
         } else if (hasmonster) {
             return BlackPanel(" M ");
@@ -95,27 +95,28 @@ public class ColorPrint {
     }
 
 
-
-    public static String BluePanel(String str){
-        return ANSI_BLUE_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    public static String BluePanel(String str) {
+        return ANSI_BLUE_BACKGROUND + ANSI_BLACK + str + ANSI_RESET;
     }
 
-    public static String GreenPanel(String str){
-        return ANSI_GREEN_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
-    }
-    public static String BrightgreenPanel(String str){
-        return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    public static String GreenPanel(String str) {
+        return ANSI_GREEN_BACKGROUND + ANSI_BLACK + str + ANSI_RESET;
     }
 
-    public static String YellowPanel(String str){
-        return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
-    }
-    public static String BlackPanel(String str){
-        return ANSI_BLACK_BACKGROUND+ANSI_WHITE+str+ANSI_RESET;
+    public static String BrightgreenPanel(String str) {
+        return ANSI_BRIGHT_GREEN_BACKGROUND + ANSI_BLACK + str + ANSI_RESET;
     }
 
-    public static String RedPanel(String str){
-        return ANSI_RED_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    public static String YellowPanel(String str) {
+        return ANSI_YELLOW_BACKGROUND + ANSI_BLACK + str + ANSI_RESET;
+    }
+
+    public static String BlackPanel(String str) {
+        return ANSI_BLACK_BACKGROUND + ANSI_WHITE + str + ANSI_RESET;
+    }
+
+    public static String RedPanel(String str) {
+        return ANSI_RED_BACKGROUND + ANSI_BLACK + str + ANSI_RESET;
     }
 
 

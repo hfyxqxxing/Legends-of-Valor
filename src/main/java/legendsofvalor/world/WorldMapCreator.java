@@ -16,7 +16,6 @@ public class WorldMapCreator {
     private Random random;
 
 
-
     public WorldMapCreator() {
         this.cols = 8;
         this.rows = 8;
@@ -46,7 +45,7 @@ public class WorldMapCreator {
     }
 
     public WorldMap create() {
-        WorldMap wm = new WorldMap(rows,cols);
+        WorldMap wm = new WorldMap(rows, cols);
         ArrayList<Position> plains = new ArrayList<>();
         int b_count = 0;
         int c_count = 0;
@@ -55,7 +54,7 @@ public class WorldMapCreator {
         /** Should be rows and cols. */
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
-                Position position = new Position(i,j);
+                Position position = new Position(i, j);
                 if ((j % 3) == 2) {
                     wm.setMap(position, WorldSpaceCreator.create("Wall"));
                     continue;
@@ -81,28 +80,28 @@ public class WorldMapCreator {
                     k_count++;
                 } else {
                     wm.setMap(position, WorldSpaceCreator.create("Plain"));
-                    plains.add(new Position(i,j));
+                    plains.add(new Position(i, j));
                 }
             }
         }
-         if (plains.isEmpty()) {
-             System.out.println("All special places. Not available map");
-             return wm;
-         }
-         Collections.shuffle(plains);
+        if (plains.isEmpty()) {
+            System.out.println("All special places. Not available map");
+            return wm;
+        }
+        Collections.shuffle(plains);
 
-         if (b_count == 0) {
-             Position position = plains.remove(0);
-             wm.setMap(position, WorldSpaceCreator.create("Bush"));
-         }
-         if (c_count == 0) {
-             Position position = plains.remove(0);
-             wm.setMap(position, WorldSpaceCreator.create("Cave"));
-         }
-         if (k_count == 0) {
-             Position position = plains.remove(0);
-             wm.setMap(position, WorldSpaceCreator.create("Koulou"));
-         }
+        if (b_count == 0) {
+            Position position = plains.remove(0);
+            wm.setMap(position, WorldSpaceCreator.create("Bush"));
+        }
+        if (c_count == 0) {
+            Position position = plains.remove(0);
+            wm.setMap(position, WorldSpaceCreator.create("Cave"));
+        }
+        if (k_count == 0) {
+            Position position = plains.remove(0);
+            wm.setMap(position, WorldSpaceCreator.create("Koulou"));
+        }
         return wm;
     }
 }
