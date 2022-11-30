@@ -3,6 +3,7 @@
  */
 
 package legendsofvalor.character;
+
 import legendsofvalor.world.Position;
 
 

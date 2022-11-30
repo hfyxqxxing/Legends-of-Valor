@@ -4,8 +4,116 @@
 
 package legendsofvalor;
 
+import java.util.ArrayList;
+
+
+import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.utils.ConfigurationAdaptor;
+import legendsofvalor.utils.GameAI;
+import legendsofvalor.utils.GameUtils;
+import legendsofvalor.utils.UserInput;
+import legendsofvalor.view.HeroView;
+import legendsofvalor.world.WorldMap;
+import legendsofvalor.world.Position;
+import legendsofvalor.character.Hero;
+import legendsofvalor.character.Monster;
+import legendsofvalor.character.MonsterFactory;
+
 public class GamePlatform {
+
+
+    private String getHelp() {
+        String re = "Game Legends of Valor\n";
+        re += "In this game, you can move around using [w]/[s]/[a]/[d]/[t] in the map. You need to reach the monsters' Nexus to win\n";
+        re += "You can buy items in your Nexus\n";
+        re += "If the monster entered your Nexus, you failed and game is over\n";
+
+        return re;
+    }
+
+    private void initTeam(ArrayList<Hero> all_heroes, int lane) {
+        while (true) {
+            int index = UserInput.getInstance().getChoice(1, all_heroes.size());
+            if (WorldMap.getInstance().getHeroes().contains(all_heroes.get(index))) {
+                ColorPrint.error("You have already selected this hero. Please enter a valid index:");
+                continue;
+            }
+            Hero curHero = all_heroes.get(index - 1);
+            Position position = WorldMap.getInstance().getHeroInitPosition(lane);
+            WorldMap.getInstance().register(curHero);
+            curHero.setPosition(position);
+
+            return;
+        }
+    }
+
+    private void generateMonsters() {
+        ArrayList<Hero> heroes = WorldMap.getInstance().getHeroes();
+        for (int i = 0; i <= 2; i++) {
+            Monster monster = MonsterFactory.create(heroes.get(i).getLevel().get());
+            Position position = WorldMap.getInstance().getMonsterInitPosition(i);
+            WorldMap.getInstance().register(monster);
+            monster.setPosition(position);
+        }
+    }
+
+
     public void startGame() {
-        System.out.println("Hello World!");
+        // print welcome message
+        ColorPrint.green("Welcome to Legends: Monsters and Heroes!");
+        // load configuration using adaptor
+        ColorPrint.plain("Loading configuration...");
+        ConfigurationAdaptor adaptor = ConfigurationAdaptor.getInstance();
+        ColorPrint.plain("Done!");
+        // show help
+        ColorPrint.plain(getHelp());
+        // show all heroes
+        ColorPrint.green("Here are all the heroes:");
+        ArrayList<Hero> all_heroes = adaptor.getHeroes();
+        ColorPrint.plain(GameUtils.getCharacterTable(all_heroes));
+        ColorPrint.plain("You need to select 3 characters to play with.");
+        // select 3 heroes
+        System.out.println("You need to select 3 characters to play with.");
+        for (int i = 0; i < 3; i++) {
+            ColorPrint.query("Please select a hero for lane " + (i + 1) + " using numbers:");
+            initTeam(all_heroes, i);
+        }
+        System.out.println(GameUtils.getCharacterTable(WorldMap.getInstance().getHeroes()));
+        ColorPrint.green("Your team of heroes if complete! Good luck on your quest!");
+        // Game begins, init monsters and show the map
+        generateMonsters();
+        System.out.println(WorldMap.getInstance());
+        // Game loop
+        int gameResult = 0;
+        for (int R = 1; gameResult != 0; R++) {
+            if (R % 8 == 0) {
+                generateMonsters();
+            }
+            // hero's turn
+            ArrayList<Hero> heros = WorldMap.getInstance().getHeroes();
+            for (int i = 0; i < heros.size(); i++) {
+                Hero curHero = heros.get(i);
+                HeroView.view(curHero);
+                if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
+                    break;
+                }
+            }
+            // monster's turn
+            ArrayList<Monster> monsters = WorldMap.getInstance().getMonsters();
+            for (int i = 0; i < monsters.size(); i++) {
+                Monster curMonster = WorldMap.getInstance().getMonsters().get(i);
+                GameAI.MonsterAI(curMonster);
+            }
+            WorldMap.getInstance().checkWin();
+            if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
+                break;
+            }
+        }
+        if (gameResult == 1) {
+            ColorPrint.green("Congratulations! You have won the game!");
+        } else {
+            ColorPrint.red("You have lost the game! Game over!");
+        }
+
     }
 }
