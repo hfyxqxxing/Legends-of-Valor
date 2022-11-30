@@ -11,7 +11,7 @@ import legendsofvalor.utils.UserInput;
 public class SpellView {
     public static boolean view(Hero curHero, Monster monster) {
         ColorPrint.green("Current Hero's Spell:\n");
-        System.out.println(curHero.getInventory().getSpellString());
+        ColorPrint.plain(curHero.getInventory().getSpellString());
         while (true) {
             ColorPrint.query(
                     "Please enter [1] to perform spell attack, or enter [0] to cancel and go back:");
