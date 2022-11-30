@@ -5,7 +5,10 @@ package legendsofvalor.character;
 
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.world.CellKoulou;
 import legendsofvalor.world.Position;
+import legendsofvalor.world.WorldCell;
+import legendsofvalor.world.WorldMap;
 
 public class Hero extends Character {
     private Strength strength;
@@ -141,7 +144,12 @@ public class Hero extends Character {
     }
 
     public int getAttackDamage() {
-        return (int) ((getWeaponDamage() + strength.get()) * 0.05);
+        int tmpStreangth = strength.get();
+        if (WorldMap.getInstance().getCell(getPosition()) instanceof CellKoulou) {
+            tmpStreangth *= 1.1;
+        }
+
+        return (int) ((getWeaponDamage() + tmpStreangth) * 0.05);
     }
 
     public void checkLevelUp() {

@@ -73,8 +73,11 @@ public class HeroView {
                 continue;
             }
             if (comm.equals("1")) {
-                // AttackView.view(hero);
-                return;
+                if (AttackView.view(hero)) {
+                    return;
+                } else {
+                    continue;
+                }
             }
             if (comm.equals("2")) {
                 if (SpellView.view(hero)) {
