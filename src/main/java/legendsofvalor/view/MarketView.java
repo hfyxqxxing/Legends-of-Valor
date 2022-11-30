@@ -18,12 +18,12 @@ public class MarketView {
             ColorPrint.info("Items to sell:");
             ColorPrint.plain(curHero.getInventory());
             ColorPrint.query(
-                    "Enter [1] for purchase, enter [2] for selling inventary, enter [3] for back to main menu:");
-            int comm = UserInput.getInstance().getChoice(1, 3);
+                    "Enter [1] for purchase, enter [2] for selling inventary, enter [0] to cancel and go back:");
+            int comm = UserInput.getInstance().getChoice(0, 2);
             if (comm == 1) {
                 ColorPrint.query("Please enter the index of the item you want to buy:");
                 int index = UserInput.getInstance().getChoice(1, market.size());
-                MarketItem item = market.get(index);
+                MarketItem item = market.get(index - 1);
                 int price = item.getPrice();
                 if (curHero.getLevel().get() < item.getLevel()) {
                     ColorPrint.error("You don't have enough level to buy this item. Press Enter to continue...");
@@ -45,15 +45,16 @@ public class MarketView {
 
             } else if (comm == 2) {
                 ColorPrint.query("Please enter the index of the item you want to sell:");
-                int index = UserInput.getInstance().getChoice(1, market.size());
+                int index = UserInput.getInstance().getChoice(1, curHero.getInventory().size());
 
-                MarketItem item = (MarketItem) curHero.getInventory().get(index);
-                curHero.getGold().increase(item.getSale());
-                curHero.getInventory().removeItem(curHero.getInventory().get(index));
-                market.addItem(item);
+                // sell the item, add gold to hero, put the sold item to market
+                InventoryItem item = curHero.getInventory().get(index + 1);
+                curHero.getGold().increase(((MarketItem) item).getSale());
+                market.addItem((MarketItem) item);
+                curHero.getInventory().removeItem(item);
+
                 ColorPrint.green("You have sold " + item.getName() + " successfully. Press Enter to continue...");
                 UserInput.getInstance().getNextline();
-
             } else if (comm == 3) {
                 break;
             } else {
