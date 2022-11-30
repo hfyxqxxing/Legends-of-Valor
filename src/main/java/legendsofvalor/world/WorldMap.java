@@ -21,7 +21,7 @@ public class WorldMap {
     private ArrayList<Hero> Heroes;
     private ArrayList<Monster> Monsters;
 
-    private WorldMap(int row, int col) {
+    public WorldMap(int row, int col) {
         this.rows = row;
         this.cols = col;
         this.map = new WorldCell[row][col];
