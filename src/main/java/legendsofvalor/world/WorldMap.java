@@ -1,8 +1,11 @@
 package legendsofvalor.world;
 
 
+import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
+import legendsofvalor.character.WarriorHero;
+import legendsofvalor.utils.ColorPrint;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,14 +74,11 @@ public class WorldMap {
                     continue;
                 }
                 Position pos = new Position(x+i,y+i);
-                if (getCell(pos) != null){
-                    if (getCell(pos) instanceof AccessibleCell){
-                        result.add((AccessibleCell) getCell(pos));
-                    }else {
-                        System.out.println("Inaccess");
-                    }
+                if (getAccessibleCell(pos) != null){
+                    result.add(getAccessibleCell(pos));
+                }else {
+                    System.out.println("outrange or inaccess");
                 }
-                System.out.println("outrange");
             }
         }
         return result;
@@ -96,14 +96,10 @@ public class WorldMap {
         temp.add(new Position(x,y-1));
         temp.add(new Position(x,y+1));
         for (Position p : temp) {
-            if (getCell(p) != null){
-                if (getCell(p).isAccessible()){
-                    result.add(p);
-                }else {
-                    System.out.println("Inacess");
-                }
+            if (getAccessibleCell(p) != null){
+                result.add(p);
             }else {
-                System.out.println("outrange");
+                System.out.println("outrange or inaccess");
             }
         }
         return result;
@@ -266,6 +262,12 @@ public class WorldMap {
         Monsters.add(m);
     }
 
+    public void register(Monster m,Position pos){
+        System.out.println("One monster generated");
+        m.setPosition(pos);
+        Monsters.add(m);
+    }
+
     public void setMonsters(ArrayList<Monster> monsters) {
         Monsters = monsters;
     }
@@ -288,6 +290,19 @@ public class WorldMap {
             return null;
         }
         return map[x][y];
+    }
+    public AccessibleCell getAccessibleCell(Position position){
+        int x = position.getX();
+        int y = position.getY();
+        if (x < 0 || x > rows){
+            return null;
+        }else if(y < 0 || y > cols){
+            return null;
+        } else if (y % 3 ==2) {
+            return null;
+        }
+
+        return (AccessibleCell) map[x][y];
     }
 
     /** The method to get the lane*/
@@ -315,37 +330,81 @@ public class WorldMap {
         return map[position.getX()][position.getY()].getSymbol() == ('M');
     }
 
-    /** Need changes */
-    public String toString(Position position_hero) {
-        String re = "";
-        re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
-        for (int i = 0; i < this.cols; i++) {
-            re += "|";
-            for (int j = 0; j < this.rows; j++) {
-                if (i == position_hero.getX() && j == position_hero.getY()) {
-                    re += "*H*|";
-                } else {
-                    re += " " + this.map[i][j].getSymbol() + " |";
-                }
-
+    public boolean Isherohere(int x, int y){
+        Position pos = new Position(x,y);
+        if (Heroes.isEmpty()){
+            return false;
+        }
+        for (Hero h: Heroes) {
+            if (h.getPosition().equals(pos)){
+                return true;
             }
-            re += "\n";
-            re += "+" + String.join("", Collections.nCopies(this.rows, "---+")) + "\n";
         }
-        if (isInNexusHero(position_hero)) {
-            re += "You are in a market. You can buy or sell items here.\n";
-        } else {
-            re += "You are not in a market. You can move around the map.\n";
+        return false;
+    }
+
+    public boolean IsMonsterhere(int x, int y){
+        Position pos = new Position(x,y);
+        if (Monsters.isEmpty()){
+            return false;
         }
+        for (Monster m : Monsters) {
+            if (m.getPosition().equals(pos)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Need changes */
+    public String toString() {
+        String re = "";
+        re+="L0:   X  L1:   X  L2: \n";
+        for (int i = 0; i < this.cols; i++) {
+            for (int j = 0; j < this.rows; j++) {
+                boolean hashero = Isherohere(i,j);
+                boolean hasmonster = IsMonsterhere(i,j);
+                if (map[i][j].getSymbol()=='N'){
+                    re+=ColorPrint.Nexuspanel(hashero,hasmonster);
+                } else if (map[i][j].getSymbol()=='M') {
+                    re+=ColorPrint.Nexuspanel(hashero,hasmonster);
+                }else if (map[i][j].getSymbol()=='P') {
+                    re+=ColorPrint.Plainpanel(hashero,hasmonster);
+                }else if (map[i][j].getSymbol()=='B') {
+                    re+=ColorPrint.Bushpanel(hashero,hasmonster);
+                }else if (map[i][j].getSymbol()=='C') {
+                    re+=ColorPrint.Cavepanel(hashero,hasmonster);
+                }else if (map[i][j].getSymbol()=='K') {
+                    re+=ColorPrint.Kouloupanel(hashero,hasmonster);
+                }else if (map[i][j].getSymbol()=='W') {
+                    re+=ColorPrint.Wallpanel(hashero,hasmonster);
+                }
+            }
+            re+="   " + (i+1)+" \n";
+        }
+        re+=" 1  2  3  4  5  6  7  8 \n";
+        re+="\n***";
+        re+=ColorPrint.Plainpanel(false,false)+" is plain; ";
+        re+=ColorPrint.Bushpanel(false,false)+" is bush; ";
+        re+=ColorPrint.Cavepanel(false,false)+" is cave; ";
+        re+=ColorPrint.Kouloupanel(false,false)+" is koulou; \n";
+
+//        if (isInNexusHero(h.getPosition())) {
+//            re += "You are in a market. You can buy or sell items here.\n";
+//        } else {
+//            re += "You are not in a market. You can move around the map.\n";
+//        }
         return re;
     }
 
     public static void main(String[] args) {
-        WorldMapCreator wm = new WorldMapCreator(8, 8, 0.1, 0.1, 0.1, 2);
-        WorldMap world = wm.create();
-        System.out.println(world.toString(new Position(7,0)));
-        int who = WorldMap.getInstance().checkWin();
-        System.out.println(who);
+        WorldMapCreator wm = new WorldMapCreator(8,8,0.2,0.2,0.2,2);
+        WorldMap m = wm.create();
+        Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
+        Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
+        m.register(h,new Position(7,0));
+        m.register(monster,new Position(0,0));
+        System.out.println(m);
     }
     // Sample Output:
 
@@ -367,4 +426,16 @@ public class WorldMap {
     // |*H*| N | W | N | N | W | N | N |
     // +---+---+---+---+---+---+---+---+
     // You are in a market. You can buy or sell items here.
+//            System.out.println(ColorPrint.Nexuspanel(true));
+//        System.out.println(ColorPrint.Nexuspanel(false));
+//        System.out.println(ColorPrint.Plainpanel(true));
+//        System.out.println(ColorPrint.Plainpanel(false));
+//        System.out.println(ColorPrint.Bushpanel(true));
+//        System.out.println(ColorPrint.Bushpanel(false));
+//        System.out.println(ColorPrint.Wallpanel());
+//        System.out.println(ColorPrint.Wallpanel());
+//        System.out.println(ColorPrint.Cavepanel(true));
+//        System.out.println(ColorPrint.Cavepanel(false));
+//        System.out.println(ColorPrint.Kouloupanel(true));
+//        System.out.println(ColorPrint.Kouloupanel(false));
 }

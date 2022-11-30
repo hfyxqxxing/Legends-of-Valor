@@ -14,6 +14,14 @@ public class Position {
         return this;
     }
 
+    public boolean equals(Position the_other){
+        if (x==the_other.getX() && y==the_other.getY()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public int getX() {
         return x;
     }
