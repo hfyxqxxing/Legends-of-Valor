@@ -278,7 +278,7 @@ public class WorldMap {
 
     public Position getHeroInitPosition(int lane) {
         if (lane * 3 < cols && lane >= 0) {
-            return new Position(rows, lane * 3);
+            return new Position(rows - 1, lane * 3);
         } else {
             System.out.println("No such lane nexus");
             return null;
