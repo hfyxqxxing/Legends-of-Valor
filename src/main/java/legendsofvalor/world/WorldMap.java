@@ -307,12 +307,22 @@ public class WorldMap {
 
     public void register(Monster m, Position pos) {
         if (Monsters.contains(m)) {
-            System.out.println("Not avaialble");
+            // Should not be same instance
+            return;
+        }
+        // if Nexus occupied, monster will not be added
+        if (getCell(pos).hasMonster()) {
             return;
         }
         m.setPosition(pos);
         getAccessibleCell(pos).setMonster(m);
         Monsters.add(m);
+    }
+
+    public void removeMonster(Monster m) {
+        Position p = m.getPosition();
+        getAccessibleCell(p).setMonster(null);
+        Monsters.remove(m);
     }
 
     public void setMonsters(ArrayList<Monster> monsters) {

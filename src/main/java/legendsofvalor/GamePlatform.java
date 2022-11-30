@@ -39,8 +39,14 @@ public class GamePlatform {
 
     private void generateMonsters() {
         ArrayList<Hero> heroes = WorldMap.getInstance().getHeroes();
-        for (int i = 0; i <= 2; i++) {
-            Monster monster = MonsterFactory.create(heroes.get(i).getLevel().get());
+        int highestLevel = 0;
+        for (Hero hero : heroes) {
+            if (hero.getLevel().get() > highestLevel) {
+                highestLevel = hero.getLevel().get();
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            Monster monster = MonsterFactory.create(highestLevel);
             Position position = WorldMap.getInstance().getMonsterInitPosition(i);
             WorldMap.getInstance().register(monster, position);
         }
