@@ -19,8 +19,9 @@ public class TestMap {
     @Test
     public void TestMapCreator() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(7, 0));
@@ -31,8 +32,9 @@ public class TestMap {
     @Test
     public void TestAround() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(3, 0));
@@ -48,8 +50,9 @@ public class TestMap {
     @Test
     public void TestAttackScope() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Hero h2 = new WarriorHero("Gaerdal_Ironhand2", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
@@ -76,8 +79,9 @@ public class TestMap {
     @Test
     public void TestCanMove() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(3, 1));
@@ -112,8 +116,9 @@ public class TestMap {
     @Test
     public void TestMove() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(4, 0));

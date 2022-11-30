@@ -19,6 +19,10 @@ public class WorldMapCreator {
         return create(row, col, 0.2, 0.3, 0.5, new Random(seed));
     }
 
+    public static WorldMap create(int row, int col, double bushProbability, double caveProbability, double koulouProbability, int seed) {
+        return create(row, col, bushProbability, caveProbability, koulouProbability, new Random(seed));
+    }
+
     public static WorldMap create(int row, int col, double bushProbability, double caveProbability, double koulouProbability, Random random) {
         WorldMap wm = new WorldMap(row, col);
         ArrayList<Position> plains = new ArrayList<>();
