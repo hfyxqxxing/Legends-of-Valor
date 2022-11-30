@@ -22,15 +22,6 @@ import legendsofvalor.character.MonsterFactory;
 public class GamePlatform {
 
 
-    private String getHelp() {
-        String re = "Game Legends of Valor\n";
-        re += "In this game, you can move around using [w]/[s]/[a]/[d]/[t] in the map. You need to reach the monsters' Nexus to win\n";
-        re += "You can buy items in your Nexus\n";
-        re += "If the monster entered your Nexus, you failed and game is over\n";
-
-        return re;
-    }
-
     private void initTeam(ArrayList<Hero> all_heroes, int lane) {
         while (true) {
             int index = UserInput.getInstance().getChoice(1, all_heroes.size());
@@ -63,8 +54,6 @@ public class GamePlatform {
         ColorPrint.plain("Loading configuration...");
         ConfigurationAdaptor adaptor = ConfigurationAdaptor.getInstance();
         ColorPrint.plain("Done!");
-        // show help
-        ColorPrint.plain(getHelp());
         // show all heroes
         ColorPrint.green("Here are all the heroes:");
         ArrayList<Hero> all_heroes = adaptor.getHeroes();
@@ -86,11 +75,12 @@ public class GamePlatform {
             if (R % 8 == 0) {
                 generateMonsters();
             }
-            // print the map
-            System.out.println(WorldMap.getInstance());
             // hero's turn
             ArrayList<Hero> heros = WorldMap.getInstance().getHeroes();
             for (int i = 0; i < heros.size(); i++) {
+                // print the map
+                System.out.println(WorldMap.getInstance());
+                // do hero's turn
                 Hero curHero = heros.get(i);
                 ColorPrint.green("[Hero] " + curHero.getName().get() + "'s turn");
                 HeroView.view(curHero);
@@ -114,6 +104,8 @@ public class GamePlatform {
                     break;
                 }
             }
+            ColorPrint.plain("A round ends. Press enter to continue...");
+            UserInput.getInstance().getNextline();
         }
         if (gameResult == 1) {
             ColorPrint.green("Congratulations! You have won the game!");

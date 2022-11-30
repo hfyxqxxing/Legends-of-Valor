@@ -5,6 +5,7 @@ package legendsofvalor.character;
 
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.world.Position;
 
 public class Hero extends Character {
     private Strength strength;
@@ -18,6 +19,7 @@ public class Hero extends Character {
     private String heroType;
     private EquippedWeaponList equippedWeaponList;
     private Armor armor;
+    private Position revivePosition;
 
     public Hero(Name name, HP hp, Level level, Defense defense, Strength strength, MP mp, Dexterity dexterity, Agility agility, Gold gold, Hand hands, Experience experience, String heroType) {
         super(name, hp, level, defense);
@@ -36,6 +38,14 @@ public class Hero extends Character {
 
     public Hero(String name, int hp, int level, int defense, int strength, int mp, int dexterity, int agility, int gold, int hands, int experience, String heroType) {
         this(new Name(name), new HP(hp), new Level(level), new Defense(defense), new Strength(strength), new MP(mp), new Dexterity(dexterity), new Agility(agility), new Gold(gold), new Hand(hands), new Experience(experience), heroType);
+    }
+
+    public void setRevivePosition(Position revivePosition) {
+        this.revivePosition = revivePosition;
+    }
+
+    public Position getRevivePosition() {
+        return revivePosition;
     }
 
     public Strength getStrength() {
