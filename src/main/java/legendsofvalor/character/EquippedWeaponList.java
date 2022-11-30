@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import legendsofvalor.item.Weapon;
+import legendsofvalor.utils.GameUtils;
 
 public class EquippedWeaponList extends CharacterAttribute {
     private ArrayList<Weapon> weapons;
@@ -64,17 +65,11 @@ public class EquippedWeaponList extends CharacterAttribute {
         if (size() == 0) {
             return "No weapons equipped";
         }
-        String re = "";
-        for (int i = 0; i < weapons.size(); ++i) {
-            if (i == 0) {
-                re += "\n";
-
-                String header = weapons.get(i).getWeaponHeader();
-                re += "     " + header + "\n" + "     " + String.join("", Collections.nCopies(header.length(), "-")) + "\n";
-
-            }
-            re += String.format("%-5s", "[" + i + "]") + weapons.get(i).getWeaponBody() + "\n";
+        String header = weapons.get(0).getWeaponHeader();
+        ArrayList<String> weaponBodyList = new ArrayList<String>();
+        for (Weapon weapon : weapons) {
+            weaponBodyList.add(weapon.getWeaponBody());
         }
-        return re;
+        return GameUtils.getNiceTable(header, weaponBodyList);
     }
 }
