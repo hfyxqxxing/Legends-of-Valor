@@ -6,11 +6,18 @@ import legendsofvalor.character.Hero;
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
 import legendsofvalor.utils.UserInput;
+import legendsofvalor.utils.GameUtils;
 
 public class ArmorView {
     public static void view(Hero curHero) {
         while (true) {
             ColorPrint.green("Current Hero's Armor:\n");
+            if (curHero.getArmor() == null) {
+                ColorPrint.plain("No Armor");
+            } else {
+                ColorPrint.plain(curHero.getArmor().toString());
+            }
+            ColorPrint.green("Current Armorpon Inventory:");
             ColorPrint.plain(curHero.getInventory().getArmorString());
             ColorPrint.query(
                     "Please enter [1] to add/replace the armor(limit 1), enter [2] to remove current hero's armor, or enter [0] to cancel and go back:");
