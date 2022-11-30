@@ -126,16 +126,16 @@ public class TestMap {
         System.out.println(m);
         Position newone = m.canMoveTo(h, "Up");
         if (newone != null) {
-            m.MoveTo(h, newone);
+            m.moveTo(h, newone);
         }
         Position m_one = m.canMoveTo(monster);
         if (m_one != null) {
-            m.MoveTo(monster, m_one);
+            m.moveTo(monster, m_one);
         }
         System.out.println(m);
         Position newone2 = m.canMoveTo(h, "Up");
         if (newone2 != null) {
-            m.MoveTo(h, newone2);
+            m.moveTo(h, newone2);
         }
         System.out.println(m);
         System.out.println(m.getAccessibleCell(new Position(3, 0)));

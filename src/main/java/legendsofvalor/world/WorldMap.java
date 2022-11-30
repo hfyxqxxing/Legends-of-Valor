@@ -111,14 +111,14 @@ public class WorldMap {
     }
 
     /** Can be used as any permitted movement. teleport/recall/move */
-    public void MoveTo(Hero hero, Position next) {
+    public void moveTo(Hero hero, Position next) {
         Position old = hero.getPosition();
         hero.setPosition(next);
         getAccessibleCell(old).setHero(null);
         getAccessibleCell(next).setHero(hero);
     }
 
-    public void MoveTo(Monster monster, Position next) {
+    public void moveTo(Monster monster, Position next) {
         Position old = monster.getPosition();
         monster.setPosition(next);
         getAccessibleCell(old).setMonster(null);
@@ -331,9 +331,9 @@ public class WorldMap {
     public WorldCell getCell(Position position) {
         int x = position.getX();
         int y = position.getY();
-        if (x < 0 || x > rows) {
+        if (x < 0 || x >= rows) {
             return null;
-        } else if (y < 0 || y > cols) {
+        } else if (y < 0 || y >= cols) {
             return null;
         }
         return map[x][y];
@@ -342,9 +342,9 @@ public class WorldMap {
     public AccessibleCell getAccessibleCell(Position position) {
         int x = position.getX();
         int y = position.getY();
-        if (x < 0 || x > rows) {
+        if (x < 0 || x >= rows) {
             return null;
-        } else if (y < 0 || y > cols) {
+        } else if (y < 0 || y >= cols) {
             return null;
         } else if (y % 3 == 2) {
             return null;
