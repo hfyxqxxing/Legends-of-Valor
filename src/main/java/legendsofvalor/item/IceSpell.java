@@ -6,7 +6,7 @@ package legendsofvalor.item;
 
 import legendsofvalor.character.*;
 
-public class IceSpell extends Spell implements Effect_to_Hero, Effect_to_Monster {
+public class IceSpell extends Spell implements EffectToHero, EffectToMonster {
     public IceSpell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale, damage, manaCost, quantity);
         spellType = "Ice";

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import legendsofvalor.character.*;
 
-public class Potion extends Item implements Effect_to_Hero {
+public class Potion extends Item implements EffectToHero {
     protected int powerUp;
     protected ArrayList<PotionFunction> potionFunctions;
 

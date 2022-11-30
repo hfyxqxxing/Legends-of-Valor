@@ -3,10 +3,10 @@
  */
 package legendsofvalor.item;
 
-import legendsofvalor.character.Effect_to_Hero;
+import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 
-public class Armor extends Item implements Effect_to_Hero {
+public class Armor extends Item implements EffectToHero {
     private int defense;
 
     public Armor(String name, int level, int price, int sale, int defense) {

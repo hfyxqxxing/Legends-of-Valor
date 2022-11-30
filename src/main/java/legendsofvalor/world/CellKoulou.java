@@ -1,9 +1,9 @@
 package legendsofvalor.world;
 
-import legendsofvalor.character.Effect_to_Hero;
+import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 
-public class CellKoulou extends AccessibleCell{
+public class CellKoulou extends AccessibleCell {
         CellKoulou() {
                 this.symbol = 'K';
                 this.name = "Koulou";
