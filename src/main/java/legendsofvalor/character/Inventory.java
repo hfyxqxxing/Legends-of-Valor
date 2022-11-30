@@ -54,6 +54,16 @@ public class Inventory extends CharacterAttribute {
         Collections.sort(items, new SortbyItemType());
     }
 
+    public ArrayList<Potion> getAllPotions() {
+        ArrayList<Potion> potions = new ArrayList<Potion>();
+        for (InventoryItem item : items) {
+            if (item.getItemType() == "Potion") {
+                potions.add((Potion) item);
+            }
+        }
+        return potions;
+    }
+
     @Override
     public String toString() {
         if (size() == 0) {
@@ -75,7 +85,7 @@ public class Inventory extends CharacterAttribute {
                 re += "     " + header + "\n" + "     " + String.join("", Collections.nCopies(header.length(), "-")) + "\n";
 
             }
-            re += String.format("%-5s", "[" + i + "]") + items.get(i).getInventoryBody() + "\n";
+            re += String.format("%-5s", "[" + i + 1 + "]") + items.get(i).getInventoryBody() + "\n";
         }
 
         return re;
