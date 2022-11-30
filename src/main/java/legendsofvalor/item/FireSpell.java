@@ -6,23 +6,15 @@ package legendsofvalor.item;
 
 import legendsofvalor.character.*;
 
-public class FireSpell extends Spell implements EffectToHero, Effect_to_Monster {
+public class FireSpell extends Spell {
     public FireSpell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale, damage, manaCost, quantity);
         spellType = "Fire";
     }
 
-    /** If there exists buff for hero, can be written here */
     @Override
-    public void effect(Hero hero) {
-        // hero.getMP().decrease(manaCost);
-    }
+    public void attack(Hero hero, Monster monster) {
 
-    /** In the hero's cast_a_Spell() function works on the damage calculation. */
-    @Override
-    public void effect(Monster monster) {
-        // monster.getDefense().decrease((int) (monster.getDefense().get() * 0.1));
     }
-
 
 }

@@ -6,20 +6,15 @@ package legendsofvalor.item;
 
 import legendsofvalor.character.*;
 
-public class IceSpell extends Spell implements EffectToHero, EffectToMonster {
+public class IceSpell extends Spell {
     public IceSpell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale, damage, manaCost, quantity);
         spellType = "Ice";
     }
 
     @Override
-    public void effect(Hero hero) {
-        // hero.getMP().decrease(manaCost);
-    }
+    public void attack(Hero hero, Monster monster) {
 
-    @Override
-    public void effect(Monster monster) {
-        // monster.getDamage().decrease((int) (monster.getDamage().get() * 0.1));
     }
 
 }

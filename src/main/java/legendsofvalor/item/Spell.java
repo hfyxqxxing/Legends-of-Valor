@@ -79,6 +79,8 @@ public abstract class Spell extends Item {
         this.spellType = spellType;
     }
 
+    public abstract void attack(Hero hero, Monster monster);
+
 
     // the price should change according to the usedCount
     @Override
