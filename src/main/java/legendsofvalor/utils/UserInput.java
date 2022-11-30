@@ -44,7 +44,6 @@ public class UserInput {
             }
             ColorPrint.error("Choice out of range, please try again.");
         }
-        scanner.nextLine();
         return choice;
     }
 
