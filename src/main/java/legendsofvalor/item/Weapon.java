@@ -4,10 +4,10 @@
 
 package legendsofvalor.item;
 
-import legendsofvalor.character.Effect_to_Hero;
+import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 
-public class Weapon extends Item implements Effect_to_Hero {
+public class Weapon extends Item implements EffectToHero {
 
     private int damage;
     private int hands;
