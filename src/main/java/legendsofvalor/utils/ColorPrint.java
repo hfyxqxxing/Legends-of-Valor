@@ -19,74 +19,103 @@ public class ColorPrint {
 
     public static String Nexuspanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+            return BluePanel("H M");
         } else if (hasmonster) {
-            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+            return BluePanel(" M ");
         } else if (hashero) {
-            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+            return BluePanel(" H ");
         } else {
-            return ANSI_BLUE_BACKGROUND+"   "+ANSI_RESET;
+            return BluePanel("   ");
         }
     }
+
 
     public static String Bushpanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+            return GreenPanel("H M");
         } else if (hasmonster) {
-            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+            return GreenPanel(" M ");
         } else if (hashero) {
-            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+            return GreenPanel(" H ");
         } else {
-            return ANSI_GREEN_BACKGROUND+"   "+ANSI_RESET;
+            return GreenPanel("   ");
         }
     }
+
 
     public static String Plainpanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+            return BrightgreenPanel("H M");
         } else if (hasmonster) {
-            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+            return BrightgreenPanel(" M ");
         } else if (hashero) {
-            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+            return BrightgreenPanel(" H ");
         } else {
-            return ANSI_BRIGHT_GREEN_BACKGROUND+"   "+ANSI_RESET;
+            return BrightgreenPanel("   ");
         }
     }
+
 
     public static String Cavepanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+            return YellowPanel("H M");
         } else if (hasmonster) {
-            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+            return YellowPanel(" M ");
         } else if (hashero) {
-            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+            return YellowPanel(" H ");
         } else {
-            return ANSI_YELLOW_BACKGROUND+"   "+ANSI_RESET;
+            return YellowPanel("   ");
         }
     }
+
 
     public static String Kouloupanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_RED_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+            return RedPanel("H M");
         } else if (hasmonster) {
-            return ANSI_RED_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+            return RedPanel(" M ");
         } else if (hashero) {
-            return ANSI_RED_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+            return RedPanel(" H ");
         } else {
-            return ANSI_RED_BACKGROUND+"   "+ANSI_RESET;
+            return RedPanel("   ");
         }
     }
 
+
     public static String Wallpanel(boolean hashero,boolean hasmonster){
         if (hashero && hasmonster){
-            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+"H M"+ANSI_RESET;
+            return BlackPanel("H M");
         } else if (hasmonster) {
-            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+" M "+ANSI_RESET;
+            return BlackPanel(" M ");
         } else if (hashero) {
-            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+" H "+ANSI_RESET;
+            return BlackPanel(" H ");
         } else {
-            return ANSI_BLACK_BACKGROUND+"   "+ANSI_RESET;
+            return BlackPanel("   ");
         }
+    }
+
+
+
+    public static String BluePanel(String str){
+        return ANSI_BLUE_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    }
+
+    public static String GreenPanel(String str){
+        return ANSI_GREEN_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    }
+    public static String BrightgreenPanel(String str){
+        return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    }
+
+    public static String YellowPanel(String str){
+        return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
+    }
+    public static String BlackPanel(String str){
+        return ANSI_BLACK_BACKGROUND+ANSI_WHITE+str+ANSI_RESET;
+    }
+
+    public static String RedPanel(String str){
+        return ANSI_RED_BACKGROUND+ANSI_BLACK+str+ANSI_RESET;
     }
 
 

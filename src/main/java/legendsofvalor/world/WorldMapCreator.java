@@ -14,7 +14,7 @@ public class WorldMapCreator {
     private int rows;
 
     private Random random;
-     private ArrayList<Position> plains;
+
 
 
     public WorldMapCreator() {
@@ -23,33 +23,31 @@ public class WorldMapCreator {
         this.bushProbability = 0.2;
         this.caveProbability = 0.2;
         this.koulouProbability = 0.2;
-        plains = new ArrayList<>();
+        this.random = new Random();
     }
 
-    public WorldMapCreator(int row, int col, long seed) {
+    public WorldMapCreator(int row, int col, int seed) {
         this.cols = col;
         this.rows = row;
         this.bushProbability = 0.2;
         this.caveProbability = 0.3;
         this.koulouProbability = 0.5;
         this.random = new Random(seed);
-        plains = new ArrayList<>();
     }
 
     public WorldMapCreator(int row, int col, double bushProbability, double caveProbability, double koulouProbability, int seed) {
         this.cols = col;
         this.rows = row;
-
         /** Probabilities should have a max value */
         this.bushProbability = bushProbability;
-        this.caveProbability = caveProbability + bushProbability;
-        this.koulouProbability = koulouProbability + caveProbability;
+        this.caveProbability = caveProbability + this.bushProbability;
+        this.koulouProbability = koulouProbability + this.caveProbability;
         this.random = new Random(seed);
-        plains = new ArrayList<>();
     }
 
     public WorldMap create() {
-        WorldMap wm = WorldMap.getInstance();
+        WorldMap wm = new WorldMap(rows,cols);
+        ArrayList<Position> plains = new ArrayList<>();
         int b_count = 0;
         int c_count = 0;
         int k_count = 0;
@@ -83,7 +81,7 @@ public class WorldMapCreator {
                     k_count++;
                 } else {
                     wm.setMap(position, WorldSpaceCreator.create("Plain"));
-                     plains.add(new Position(i,j));
+                    plains.add(new Position(i,j));
                 }
             }
         }
@@ -96,10 +94,12 @@ public class WorldMapCreator {
          if (b_count == 0) {
              Position position = plains.remove(0);
              wm.setMap(position, WorldSpaceCreator.create("Bush"));
-         } else if (c_count == 0) {
+         }
+         if (c_count == 0) {
              Position position = plains.remove(0);
              wm.setMap(position, WorldSpaceCreator.create("Cave"));
-         } else if (k_count == 0) {
+         }
+         if (k_count == 0) {
              Position position = plains.remove(0);
              wm.setMap(position, WorldSpaceCreator.create("Koulou"));
          }

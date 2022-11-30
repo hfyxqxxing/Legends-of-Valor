@@ -70,13 +70,13 @@ public abstract class AccessibleCell implements WorldCell, Effect_to_Hero {
     @Override
     public String toString() {
         String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "true";
-        if (hero == null) {
-            result = result + ", present Hero is ";// + hero.getName();
+        if (hero != null) {
+            result = result + ", present Hero is " + hero.getName().get();
         } else {
             result = result + ", There is no Hero here";
         }
-        if (monster == null) {
-            result = result + ", present Monster is ";// + monster.getName();
+        if (monster != null) {
+            result = result + ", present Monster is " + monster.getName().get();
         } else {
             result = result + ", There is no Monster here";
         }

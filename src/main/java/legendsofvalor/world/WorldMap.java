@@ -1,25 +1,26 @@
 package legendsofvalor.world;
 
 
+import javafx.geometry.Pos;
 import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 import legendsofvalor.character.WarriorHero;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.utils.InputCheck;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class WorldMap {
     private int rows;
     private int cols;
-
-    private static WorldMap instance = null;
     private WorldCell[][] map;
     private ArrayList<Hero> Heroes;
     private ArrayList<Monster> Monsters;
 
-    private WorldMap(int row, int col) {
+    public WorldMap(int row, int col) {
         this.rows = row;
         this.cols = col;
         this.map = new WorldCell[row][col];
@@ -27,13 +28,7 @@ public class WorldMap {
         Monsters = new ArrayList<>();
     }
 
-    /**Strange */
-    public static WorldMap getInstance() {
-        if (instance == null){
-            instance = new WorldMap(8,8);
-        }
-        return instance;
-    }
+
 
     /**The touchable characters*/
     public ArrayList<Monster> getAttackScope(Hero hero){
@@ -43,8 +38,11 @@ public class WorldMap {
             if (c.hasMonster()){
                 result.add(c.getMonster());
             }else {
-                System.out.println("No monster here");
+//                System.out.println("No monster here");
             }
+        }
+        if (result.isEmpty()){
+            System.out.println("There is no monster around the hero.");
         }
         return result;
     }
@@ -56,28 +54,25 @@ public class WorldMap {
             if (c.hasHero()){
                 result.add(c.getHero());
             }else {
-                System.out.println("No hero here");
+//                System.out.println("No hero here");
             }
         }
         return result;
     }
 
 
-    /**Need testing*/
+    /**Tested*/
     public ArrayList<AccessibleCell> around(Position position){
         ArrayList<AccessibleCell> result = new ArrayList<>();
         int x = position.getX();
         int y = position.getY();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
-                if (i ==0 && j ==0){
-                    continue;
-                }
-                Position pos = new Position(x+i,y+i);
+                Position pos = new Position(x+i,y+j);
                 if (getAccessibleCell(pos) != null){
                     result.add(getAccessibleCell(pos));
                 }else {
-                    System.out.println("outrange or inaccess");
+//                    System.out.println("outrange or inaccess");
                 }
             }
         }
@@ -106,6 +101,39 @@ public class WorldMap {
 
     }
 
+    /**Can be used as any permitted movement. teleport/recall/move*/
+    public void MoveTo(Hero hero, Position next){
+        Position old = hero.getPosition();
+        hero.setPosition(next);
+        getAccessibleCell(old).setHero(null);
+        getAccessibleCell(next).setHero(hero);
+    }
+
+    public void MoveTo(Monster monster, Position next){
+        Position old = monster.getPosition();
+        monster.setPosition(next);
+        getAccessibleCell(old).setMonster(null);
+        getAccessibleCell(next).setMonster(monster);
+    }
+
+    /**If there is a monster ahead of it, or the hero is in same line. It should moveto itself.(Staying)*/
+    public Position canMoveTo(Monster monster){
+        Position new_pos = directionStep(monster.getPosition(),"Down");
+        /**Only moves down, so it will not meet with the situation of wall or outrange*/
+        if (getAccessibleCell(new_pos).hasMonster()){
+            System.out.println("Already a Monster here");
+            return monster.getPosition();
+        }
+        for (int j = -1; j < 2; j++) {
+            Position temp = new Position(monster.getPosition().getX(),monster.getPosition().getY()+j);
+            if (getAccessibleCell(temp).hasHero()){
+                System.out.println("Movement stopped by a hero");
+                return monster.getPosition();
+            }
+        }
+        return new_pos;
+    }
+
 
     /**Need test whether the position of hero will be changed during detection*/
     public Position canMoveTo(Hero hero, String direction){
@@ -124,8 +152,8 @@ public class WorldMap {
             }
             /**If the monster is in the same line, it cannot move forward*/
             if (direction.equalsIgnoreCase("Up")){
-                int x = new_pos.getX();
-                int y = new_pos.getY();
+                int x = hero.getPosition().getX();
+                int y = hero.getPosition().getY();
                 for (int j = -1; j < 2; j++) {
                     Position mon_pos = new Position(x, y+j);
                     if (getCell(mon_pos) != null){
@@ -156,7 +184,7 @@ public class WorldMap {
 
     }
 
-    /**Has some question on choices*/
+    /**Has some question on choices. Not tested*/
     public ArrayList<Position> canTeleport(Hero fromHero, Hero TargetHero){
         ArrayList<Position> possible = new ArrayList<>();
         int lane_from = getLane(fromHero.getPosition());
@@ -174,7 +202,7 @@ public class WorldMap {
         return possible;
     }
 
-    /**return 0, game is not over*/
+    /**return 0 meaning game is not over*/
     public int checkWin(){
         for (Hero h: Heroes) {
             if (isInNexusMonster(h.getPosition())){
@@ -230,7 +258,12 @@ public class WorldMap {
             System.out.println("Already full");
             return false;
         }
+        if (Heroes.contains(h)){
+            System.out.println("Already exist");
+            return false;
+        }
         h.setPosition(position);
+        getAccessibleCell(position).setHero(h);
         Heroes.add(h);
         return true;
     }
@@ -246,9 +279,9 @@ public class WorldMap {
 
     public Position getMonsterInitPosition(int lane){
         if(lane*3 < cols && lane >= 0 ){
-            return new Position(0,lane*3);
+            return new Position(0,lane*3+1);
         }else {
-            System.out.println("No such lane monster nexus");
+            System.out.println("No such lane with monster nexus");
             return null;
         }
     }
@@ -258,13 +291,16 @@ public class WorldMap {
     }
 
     public void register(Monster m){
-        System.out.println("One monster generated");
         Monsters.add(m);
     }
 
     public void register(Monster m,Position pos){
-        System.out.println("One monster generated");
+        if (Monsters.contains(m)){
+            System.out.println("Not avaialble");
+            return;
+        }
         m.setPosition(pos);
+        getAccessibleCell(pos).setMonster(m);
         Monsters.add(m);
     }
 
@@ -301,7 +337,6 @@ public class WorldMap {
         } else if (y % 3 ==2) {
             return null;
         }
-
         return (AccessibleCell) map[x][y];
     }
 
@@ -380,62 +415,18 @@ public class WorldMap {
                     re+=ColorPrint.Wallpanel(hashero,hasmonster);
                 }
             }
-            re+="   " + (i+1)+" \n";
+            re+="   " + i+" \n";
         }
-        re+=" 1  2  3  4  5  6  7  8 \n";
+        re+=" 0  1  2  3  4  5  6  7 \n";
         re+="\n***";
         re+=ColorPrint.Plainpanel(false,false)+" is plain; ";
         re+=ColorPrint.Bushpanel(false,false)+" is bush; ";
         re+=ColorPrint.Cavepanel(false,false)+" is cave; ";
         re+=ColorPrint.Kouloupanel(false,false)+" is koulou; \n";
 
-//        if (isInNexusHero(h.getPosition())) {
-//            re += "You are in a market. You can buy or sell items here.\n";
-//        } else {
-//            re += "You are not in a market. You can move around the map.\n";
-//        }
+
         return re;
     }
 
-    public static void main(String[] args) {
-        WorldMapCreator wm = new WorldMapCreator(8,8,0.2,0.2,0.2,2);
-        WorldMap m = wm.create();
-        Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
-        Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
-        m.register(h,new Position(7,0));
-        m.register(monster,new Position(0,0));
-        System.out.println(m);
-    }
-    // Sample Output:
-
-    // +---+---+---+---+---+---+---+---+
-    // | M | M | W | M | M | W | M | M |
-    // +---+---+---+---+---+---+---+---+
-    // | P | P | W | P | P | W | P | P |
-    // +---+---+---+---+---+---+---+---+
-    // | P | B | W | K | P | W | B | P |
-    // +---+---+---+---+---+---+---+---+
-    // | P | B | W | P | P | W | P | P |
-    // +---+---+---+---+---+---+---+---+
-    // | P | B | W | P | P | W | P | C |
-    // +---+---+---+---+---+---+---+---+
-    // | P | P | W | P | P | W | P | P |
-    // +---+---+---+---+---+---+---+---+
-    // | P | P | W | C | C | W | B | P |
-    // +---+---+---+---+---+---+---+---+
-    // |*H*| N | W | N | N | W | N | N |
-    // +---+---+---+---+---+---+---+---+
-    // You are in a market. You can buy or sell items here.
-//            System.out.println(ColorPrint.Nexuspanel(true));
-//        System.out.println(ColorPrint.Nexuspanel(false));
-//        System.out.println(ColorPrint.Plainpanel(true));
-//        System.out.println(ColorPrint.Plainpanel(false));
-//        System.out.println(ColorPrint.Bushpanel(true));
-//        System.out.println(ColorPrint.Bushpanel(false));
-//        System.out.println(ColorPrint.Wallpanel());
-//        System.out.println(ColorPrint.Wallpanel());
-//        System.out.println(ColorPrint.Cavepanel(true));
-//        System.out.println(ColorPrint.Cavepanel(false));
-//        System.out.println(ColorPrint.Kouloupanel(true));
-//        System.out.println(ColorPrint.Kouloupanel(false));
+    /**Moved to TestMap*/
 }
