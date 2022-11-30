@@ -239,6 +239,24 @@ public class WorldMap {
         return true;
     }
 
+    public Position getHeroInitPosition(int lane){
+        if(lane*3 < cols && lane >= 0 ){
+            return new Position(rows,lane*3);
+        }else {
+            System.out.println("No such lane nexus");
+            return null;
+        }
+    }
+
+    public Position getMonsterInitPosition(int lane){
+        if(lane*3 < cols && lane >= 0 ){
+            return new Position(0,lane*3);
+        }else {
+            System.out.println("No such lane monster nexus");
+            return null;
+        }
+    }
+
     public ArrayList<Monster> getMonsters() {
         return Monsters;
     }
