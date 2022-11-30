@@ -144,9 +144,9 @@ public class ConfigurationAdaptor {
     }
 
     private void loadPotion() {
-        Potions.add(PotionCreator.create("Healing_Potion", 1, 250, 125, 100, "Healing"));
+        Potions.add(PotionCreator.create("Healing_Potion", 1, 250, 125, 100, "HP"));
         Potions.add(PotionCreator.create("Strength_Potion", 1, 200, 100, 75, "Strength"));
-        Potions.add(PotionCreator.create("Magic_Potion", 1, 350, 175, 100, "Mana"));
+        Potions.add(PotionCreator.create("Magic_Potion", 1, 350, 175, 100, "MP"));
         Potions.add(PotionCreator.create("Luck_Elixir", 1, 400, 200, 50, "Agility"));
         Potions.add(PotionCreator.create("Luck_Elixir", 2, 500, 250, 65, "Agility"));
         Potions.add(PotionCreator.create("Mermaid_Tears", 1, 500, 250, 80, "HP/MP/Strength/Agility"));
@@ -155,6 +155,17 @@ public class ConfigurationAdaptor {
         Potions.add(PotionCreator.create("Ambrosia", 2, 800, 400, 120, "HP/MP/Strength/Dexterity/Defense/Agility"));
         Potions.add(PotionCreator.create("Ambrosia", 3, 1000, 500, 150, "HP/MP/Strength/Dexterity/Defense/Agility"));
         Potions.add(PotionCreator.create("Revival", 3, 1000, 500, 150, "Revival"));
+        Potions.add(PotionCreator.create("Healing_Potion", 1, 300, 125, 100, "HP"));
+        Potions.add(PotionCreator.create("Strength_Potion", 1, 250, 100, 75, "Strength"));
+        Potions.add(PotionCreator.create("Magic_Potion", 1, 325, 175, 100, "MP"));
+        Potions.add(PotionCreator.create("Luck_Elixir", 1, 410, 200, 50, "Agility"));
+        Potions.add(PotionCreator.create("Luck_Elixir", 2, 520, 250, 65, "Agility"));
+        Potions.add(PotionCreator.create("Mermaid_Tears", 1, 530, 250, 80, "HP/MP/Strength/Agility"));
+        Potions.add(PotionCreator.create("Mermaid_Tears", 2, 820, 425, 100, "HP/MP/Strength/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 1, 400, 250, 100, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 2, 700, 400, 120, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 3, 1100, 500, 150, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Revival", 3, 1100, 500, 150, "Revival"));
     }
 
     private void loadSpell() {
