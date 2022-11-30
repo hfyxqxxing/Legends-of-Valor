@@ -164,6 +164,9 @@ public class WorldMap {
                 int x = hero.getPosition().getX();
                 int y = hero.getPosition().getY();
                 for (int j = -1; j < 2; j++) {
+                    if (y + j < 0 || y + j > cols - 1) {
+                        continue;
+                    }
                     Position mon_pos = new Position(x, y + j);
                     if (getCell(mon_pos) != null) {
                         if (getCell(mon_pos).hasMonster()) {
