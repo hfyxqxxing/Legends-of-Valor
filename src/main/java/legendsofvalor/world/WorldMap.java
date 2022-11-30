@@ -21,6 +21,13 @@ public class WorldMap {
     private ArrayList<Hero> Heroes;
     private ArrayList<Monster> Monsters;
 
+    public static WorldMap getInstance() {
+        if (instance == null) {
+            instance = WorldMapCreator.create();
+        }
+        return instance;
+    }
+
     public WorldMap(int row, int col) {
         this.rows = row;
         this.cols = col;
