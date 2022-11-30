@@ -54,7 +54,7 @@ public class Potion extends Item implements EffectToHero {
         for (PotionFunction potionFunction : potionFunctions) {
             re += potionFunction.getFunction() + "/";
         }
-        if (re == "") {
+        if (re.equals("") ) {
             return "";
         }
         return re.substring(0, re.length() - 1);

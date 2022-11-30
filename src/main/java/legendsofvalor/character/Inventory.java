@@ -58,7 +58,7 @@ public class Inventory extends CharacterAttribute {
     public ArrayList<Potion> getAllPotion() {
         ArrayList<Potion> potionList = new ArrayList<Potion>();
         for (InventoryItem item : items) {
-            if (item.getItemType() == "Potion") {
+            if (item.getItemType().equals("Potion")) {
                 potionList.add((Potion) item);
             }
         }
@@ -68,7 +68,7 @@ public class Inventory extends CharacterAttribute {
     public ArrayList<Spell> getAllSpell() {
         ArrayList<Spell> spellList = new ArrayList<Spell>();
         for (InventoryItem item : items) {
-            if (item.getItemType() == "Spell") {
+            if (item.getItemType().equals("Spell")) {
                 spellList.add((Spell) item);
             }
         }
@@ -78,7 +78,7 @@ public class Inventory extends CharacterAttribute {
     public ArrayList<Weapon> getAllWeapon() {
         ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
         for (InventoryItem item : items) {
-            if (item.getItemType() == "Weapon") {
+            if (item.getItemType().equals("Weapon")) {
                 weaponList.add((Weapon) item);
             }
         }
@@ -88,7 +88,7 @@ public class Inventory extends CharacterAttribute {
     public ArrayList<Armor> getAllArmor() {
         ArrayList<Armor> armorList = new ArrayList<Armor>();
         for (InventoryItem item : items) {
-            if (item.getItemType() == "Armor") {
+            if (item.getItemType().equals("Armor")) {
                 armorList.add((Armor) item);
             }
         }
