@@ -28,7 +28,7 @@ public class TestConfigurationAdaptor {
 
         Assertions.assertEquals(armors.size(), 8);
 
-        Assertions.assertEquals(potions.size(), 11);
+        Assertions.assertEquals(potions.size(), 22);
 
         Assertions.assertEquals(spells.size(), 13);
 
