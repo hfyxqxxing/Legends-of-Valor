@@ -5,6 +5,91 @@
 package legendsofvalor.utils;
 
 public class ColorPrint {
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static final String ANSI_BRIGHT_GREEN_BACKGROUND = "\033[0;102m";
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+    public static final String ANSI_MAGENTA_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    public static String Nexuspanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_BLUE_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+        } else {
+            return ANSI_BLUE_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+    public static String Bushpanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_GREEN_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+        } else {
+            return ANSI_GREEN_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+    public static String Plainpanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_BRIGHT_GREEN_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+        } else {
+            return ANSI_BRIGHT_GREEN_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+    public static String Cavepanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_YELLOW_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+        } else {
+            return ANSI_YELLOW_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+    public static String Kouloupanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_RED_BACKGROUND+ANSI_BLACK+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_RED_BACKGROUND+ANSI_BLACK+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_RED_BACKGROUND+ANSI_BLACK+" H "+ANSI_RESET;
+        } else {
+            return ANSI_RED_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+    public static String Wallpanel(boolean hashero,boolean hasmonster){
+        if (hashero && hasmonster){
+            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+"H M"+ANSI_RESET;
+        } else if (hasmonster) {
+            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+" M "+ANSI_RESET;
+        } else if (hashero) {
+            return ANSI_BLACK_BACKGROUND+ANSI_WHITE+" H "+ANSI_RESET;
+        } else {
+            return ANSI_BLACK_BACKGROUND+"   "+ANSI_RESET;
+        }
+    }
+
+
     public static String redString(String str) {
         return "\033[31m" + str + "\033[0m";
     }

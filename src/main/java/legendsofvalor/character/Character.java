@@ -3,8 +3,8 @@
  */
 
 package legendsofvalor.character;
+import legendsofvalor.world.Position;
 
-import javax.swing.text.Position;
 
 public abstract class Character {
     private Name name;

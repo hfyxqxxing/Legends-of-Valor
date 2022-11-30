@@ -1,9 +1,10 @@
 package legendsofvalor.world;
 
+import legendsofvalor.character.Effect_to_Hero;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 
-public abstract class AccessibleCell implements WorldCell {
+public abstract class AccessibleCell implements WorldCell, Effect_to_Hero {
 
     protected char symbol;
     protected String name;
@@ -23,6 +24,9 @@ public abstract class AccessibleCell implements WorldCell {
     }
 
     @Override
+    public void effect(Hero hero) {}
+
+    @Override
     public boolean isAccessible() {
         return true;
     }
@@ -34,6 +38,14 @@ public abstract class AccessibleCell implements WorldCell {
     public Hero getHero() {
         return hero;
     }
+    public boolean hasHero(){
+        if (hero == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
 
     public void setHero(Hero hero) {
         this.hero = hero;
@@ -41,6 +53,14 @@ public abstract class AccessibleCell implements WorldCell {
 
     public Monster getMonster() {
         return monster;
+    }
+
+    public boolean hasMonster(){
+        if (monster == null){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     public void setMonster(Monster monster) {
