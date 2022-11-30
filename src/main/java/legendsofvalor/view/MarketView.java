@@ -55,7 +55,7 @@ public class MarketView {
 
                 ColorPrint.green("You have sold " + item.getName() + " successfully. Press Enter to continue...");
                 UserInput.getInstance().getNextline();
-            } else if (comm == 3) {
+            } else if (comm == 0) {
                 break;
             } else {
                 ColorPrint.error("Please enter a valid command.");
