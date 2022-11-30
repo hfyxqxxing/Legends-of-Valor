@@ -48,9 +48,9 @@ public class WorldMap {
                 //                System.out.println("No monster here");
             }
         }
-        if (result.isEmpty()) {
-            System.out.println("There is no monster around the hero.");
-        }
+        // if (result.isEmpty()) {
+        //     System.out.println("There is no monster around the hero.");
+        // }
         return result;
     }
 
@@ -255,14 +255,14 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    public boolean register(Hero h) {
-        if (Heroes.size() == 3) {
-            System.out.println("Already full");
-            return false;
-        }
-        Heroes.add(h);
-        return true;
-    }
+    // public boolean register(Hero h) {
+    //     if (Heroes.size() == 3) {
+    //         System.out.println("Already full");
+    //         return false;
+    //     }
+    //     Heroes.add(h);
+    //     return true;
+    // }
 
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
@@ -301,9 +301,9 @@ public class WorldMap {
         return Monsters;
     }
 
-    public void register(Monster m) {
-        Monsters.add(m);
-    }
+    // public void register(Monster m) {
+    //     Monsters.add(m);
+    // }
 
     public void register(Monster m, Position pos) {
         if (Monsters.contains(m)) {

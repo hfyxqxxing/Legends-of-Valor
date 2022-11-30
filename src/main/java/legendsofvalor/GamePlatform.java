@@ -40,8 +40,7 @@ public class GamePlatform {
             }
             Hero curHero = all_heroes.get(index - 1);
             Position position = WorldMap.getInstance().getHeroInitPosition(lane);
-            WorldMap.getInstance().register(curHero);
-            curHero.setPosition(position);
+            WorldMap.getInstance().register(curHero, position);
 
             return;
         }
@@ -52,8 +51,7 @@ public class GamePlatform {
         for (int i = 0; i <= 2; i++) {
             Monster monster = MonsterFactory.create(heroes.get(i).getLevel().get());
             Position position = WorldMap.getInstance().getMonsterInitPosition(i);
-            WorldMap.getInstance().register(monster);
-            monster.setPosition(position);
+            WorldMap.getInstance().register(monster, position);
         }
     }
 
@@ -71,42 +69,50 @@ public class GamePlatform {
         ColorPrint.green("Here are all the heroes:");
         ArrayList<Hero> all_heroes = adaptor.getHeroes();
         ColorPrint.plain(GameUtils.getCharacterTable(all_heroes));
-        ColorPrint.plain("You need to select 3 characters to play with.");
         // select 3 heroes
-        System.out.println("You need to select 3 characters to play with.");
+        ColorPrint.info("You need to select 3 characters to play with.");
         for (int i = 0; i < 3; i++) {
             ColorPrint.query("Please select a hero for lane " + (i + 1) + " using numbers:");
             initTeam(all_heroes, i);
         }
         System.out.println(GameUtils.getCharacterTable(WorldMap.getInstance().getHeroes()));
         ColorPrint.green("Your team of heroes if complete! Good luck on your quest!");
-        // Game begins, init monsters and show the map
-        generateMonsters();
-        System.out.println(WorldMap.getInstance());
-        // Game loop
+        // Game begins
+
         int gameResult = 0;
-        for (int R = 1; gameResult != 0; R++) {
+
+        for (int R = 0; gameResult == 0; R++) {
+            // generate monsters every 8 rounds
             if (R % 8 == 0) {
                 generateMonsters();
             }
+            // print the map
+            System.out.println(WorldMap.getInstance());
             // hero's turn
             ArrayList<Hero> heros = WorldMap.getInstance().getHeroes();
             for (int i = 0; i < heros.size(); i++) {
                 Hero curHero = heros.get(i);
+                ColorPrint.green("[Hero] " + curHero.getName().get() + "'s turn");
                 HeroView.view(curHero);
+                // check win
                 if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
                     break;
                 }
+            }
+            // check win
+            if (gameResult != 0) {
+                break;
             }
             // monster's turn
             ArrayList<Monster> monsters = WorldMap.getInstance().getMonsters();
             for (int i = 0; i < monsters.size(); i++) {
                 Monster curMonster = WorldMap.getInstance().getMonsters().get(i);
+                ColorPrint.green("[Monster] " + curMonster.getName().get() + "'s turn");
                 GameAI.MonsterAI(curMonster);
-            }
-            WorldMap.getInstance().checkWin();
-            if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
-                break;
+                // check win
+                if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
+                    break;
+                }
             }
         }
         if (gameResult == 1) {
