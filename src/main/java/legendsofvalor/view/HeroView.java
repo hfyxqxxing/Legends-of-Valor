@@ -105,8 +105,11 @@ public class HeroView {
                 return;
             }
             if (comm.equals("8")) {
-                TeleportView.view(hero);
-                return;
+                if (TeleportView.view(hero)) {
+                    return;
+                } else {
+                    continue;
+                }
             }
             if (comm.equals("9")) {
                 if (!WorldMap.getInstance().isInNexusHero(hero.getPosition())) {
