@@ -184,6 +184,21 @@ public abstract class Hero extends Character {
         return re;
     }
 
+    public void addBoost(String boost, int powerUp) {
+        if (boost.equals("Health")) {
+            getHP().increase(powerUp);
+        } else if (boost.equals("Strength")) {
+            getStrength().increase(powerUp);
+        } else if (boost.equals("Mana")) {
+            getMP().increase(powerUp);
+        } else if (boost.equals("Dexterity")) {
+            getDexterity().increase(powerUp);
+        } else if (boost.equals("Agility")) {
+            getAgility().increase(powerUp);
+        } else if (boost.equals("Defense")) {
+            getDefense().increase(powerUp);
+        }
+    }
 
     /**Print messages-------------------------------------------*/
     public String getStrengthString() {
