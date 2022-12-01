@@ -4,10 +4,8 @@
 
 package legendsofvalor.item;
 
-import legendsofvalor.character.EffectToHero;
-import legendsofvalor.character.Hero;
 
-public class Weapon extends Item  {
+public class Weapon extends Item {
 
     private int damage;
     private int hands;

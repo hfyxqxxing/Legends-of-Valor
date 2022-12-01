@@ -3,10 +3,8 @@
  */
 package legendsofvalor.item;
 
-import legendsofvalor.character.EffectToHero;
-import legendsofvalor.character.Hero;
 
-public class Armor extends Item  {
+public class Armor extends Item {
     private int defense;
 
     public Armor(String name, int level, int price, int sale, int defense) {
@@ -25,7 +23,7 @@ public class Armor extends Item  {
         this.defense = defense;
     }
 
-    /**Print Messages------------------------------*/
+    /** Print Messages------------------------------ */
 
     public String getItemType() {
         return "Armor";
