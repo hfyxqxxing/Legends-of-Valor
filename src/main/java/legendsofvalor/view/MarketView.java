@@ -25,8 +25,11 @@ public class MarketView {
                     "Enter [1] for purchase, enter [2] for selling inventary, enter [0] to cancel and go back:");
             int comm = UserInput.getInstance().getChoice(0, 2);
             if (comm == 1) {
-                ColorPrint.query("Please enter the index of the item you want to buy:");
-                int index = UserInput.getInstance().getChoice(1, market.size());
+                ColorPrint.query("Please enter the index of the item you want to buy, enter [0] to cancel and go back:");
+                int index = UserInput.getInstance().getChoice(0, market.size());
+                if (index == 0) {
+                    continue;
+                }
                 MarketItem item = market.get(index - 1);
                 int price = item.getPrice();
                 if (curHero.getLevel().get() < item.getLevel()) {
@@ -48,8 +51,11 @@ public class MarketView {
                 UserInput.getInstance().getNextline();
 
             } else if (comm == 2) {
-                ColorPrint.query("Please enter the index of the item you want to sell:");
-                int index = UserInput.getInstance().getChoice(1, curHero.getInventory().size());
+                ColorPrint.query("Please enter the index of the item you want to sell, enter [0] to cancel and go back:");
+                int index = UserInput.getInstance().getChoice(0, curHero.getInventory().size());
+                if (index == 0) {
+                    continue;
+                }
 
                 // sell the item, add gold to hero, put the sold item to market
                 InventoryItem item = curHero.getInventory().get(index - 1);

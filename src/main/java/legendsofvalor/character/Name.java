@@ -18,4 +18,8 @@ public class Name extends CharacterAttribute {
     public void set(String name) {
         this.name = name;
     }
+
+    public String toString() {
+        return name;
+    }
 }
