@@ -41,7 +41,7 @@ public class MarketView {
                 }
 
                 curHero.getGold().decrease(price);
-                curHero.getInventory().addItem((InventoryItem) market.get(index));
+                curHero.getInventory().addItem((InventoryItem) item);
                 market.removeItem(item);
                 ColorPrint.green(
                         "You have bought " + item.getName() + " successfully. Press Enter to continue...");
