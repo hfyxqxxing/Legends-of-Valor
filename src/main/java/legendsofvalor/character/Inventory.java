@@ -27,6 +27,14 @@ public class Inventory extends CharacterAttribute {
         return items.size();
     }
 
+    public boolean isEmpty(){
+        if (items.size() == 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public InventoryItem get(int index) {
         return items.get(index);
     }

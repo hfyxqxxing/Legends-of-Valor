@@ -13,6 +13,9 @@ public class PotionView {
         while (true) {
             ColorPrint.green("Current Hero's Potion:\n");
             ColorPrint.plain(curHero.getInventory().getPotionString());
+            if (curHero.getInventory().isEmpty()){
+                return false;
+            }
             ColorPrint.query(
                     "Please enter [1] to consume a potion, enter [2] to show current hero information, or enter [0] to cancel and go back:");
             int comm = UserInput.getInstance().getChoice(0, 2);

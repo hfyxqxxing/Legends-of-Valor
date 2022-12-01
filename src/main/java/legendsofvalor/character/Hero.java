@@ -195,17 +195,26 @@ public abstract class Hero extends Character {
     }
 
     public String getHeader() {
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience","Position");
+        return re;
+    }
+    public String getHeaderAll() {
         String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience");
         return re;
     }
 
     public String getBody() {
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
+        return re;
+    }
+
+    public String getBodyAll() {
         String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get());
         return re;
     }
 
     public String toString() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get(),getPosition());
         return re;
     }
 

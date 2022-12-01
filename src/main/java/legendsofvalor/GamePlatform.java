@@ -64,7 +64,7 @@ public class GamePlatform {
         // show all heroes
         ColorPrint.green("Here are all the heroes:");
         ArrayList<Hero> all_heroes = adaptor.getHeroes();
-        ColorPrint.plain(GameUtils.getCharacterTable(all_heroes));
+        ColorPrint.plain(GameUtils.getCharacterTableAll(all_heroes));
         // select 3 heroes
         ColorPrint.info("You need to select 3 characters to play with.");
         for (int i = 0; i < 3; i++) {

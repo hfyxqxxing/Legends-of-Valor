@@ -93,8 +93,6 @@ public class WorldMap {
         for (Position p : temp) {
             if (getAccessibleCell(p) != null) {
                 result.add(p);
-            } else {
-                System.out.println("outrange or inaccess");
             }
         }
         return result;
@@ -121,13 +119,13 @@ public class WorldMap {
         Position new_pos = directionStep(monster.getPosition(), "Down");
         /** Only moves down, so it will not meet with the situation of wall or outrange */
         if (getAccessibleCell(new_pos).hasMonster()) {
-            System.out.println("Already a Monster here");
+            ColorPrint.error("Already a Monster here");
             return monster.getPosition();
         }
         for (int j = -1; j < 2; j++) {
             Position temp = new Position(monster.getPosition().getX(), monster.getPosition().getY() + j);
             if (getAccessibleCell(temp).hasHero()) {
-                System.out.println("Movement stopped by a hero");
+                ColorPrint.plain("Movement stopped by a hero");
                 return monster.getPosition();
             }
         }
@@ -145,7 +143,7 @@ public class WorldMap {
             return null;
         } else {
             if (getCell(new_pos).hasHero()) {
-                System.out.println("Already a hero here");
+                ColorPrint.error("Already a hero here");
                 return null;
             }
             /** If the monster is in the same line, it cannot move forward */
@@ -191,7 +189,7 @@ public class WorldMap {
         int lane_from = getLane(fromHero.getPosition());
         int lane_to = getLane(TargetHero.getPosition());
         if (lane_from == lane_to) {
-            return null;
+            return possible;
         }
         ArrayList<Position> adjency = tel_adjaceny(TargetHero.getPosition());
         for (Position p : adjency) {

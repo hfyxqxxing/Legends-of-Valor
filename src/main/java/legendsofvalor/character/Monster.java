@@ -60,11 +60,23 @@ public class Monster extends Character {
     }
 
     public String getHeader() {
+        String re = String.format("%-25s %-10s %-10s %-10s %-10s %-10s %-8s", "[Type] Name", "Level", "HP", "Damage", "Defense", "Agility", "Position");
+        return re;
+    }
+
+    @Override
+    public String getHeaderAll() {
         String re = String.format("%-25s %-10s %-10s %-10s %-10s %-10s", "[Type] Name", "Level", "HP", "Damage", "Defense", "Agility");
         return re;
     }
 
     public String getBody() {
+        String re = String.format("%-25s %-10s %-10s %-10s %-10s %-10s %-8s", "[" + getMonsterType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDamage().get(), getDefense().get(), getAgility().get(),getPosition());
+        return re;
+    }
+
+    @Override
+    public String getBodyAll() {
         String re = String.format("%-25s %-10s %-10s %-10s %-10s %-10s", "[" + getMonsterType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDamage().get(), getDefense().get(), getAgility().get());
         return re;
     }

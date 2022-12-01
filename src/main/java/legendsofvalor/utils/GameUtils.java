@@ -31,6 +31,14 @@ public class GameUtils {
         return getNiceTable(characters.get(0).getHeader(), rows);
     }
 
+    public static String getCharacterTableAll(ArrayList<? extends Character> characters) {
+        ArrayList<String> rows = new ArrayList<>();
+        for (int i = 0; i < characters.size(); i++) {
+            rows.add(characters.get(i).getBodyAll());
+        }
+        return getNiceTable(characters.get(0).getHeaderAll(), rows);
+    }
+
     // print table of single hero or monster
     public static <T extends Character> String getCharacterTable(T character) {
         ArrayList<T> temp = new ArrayList<T>();
