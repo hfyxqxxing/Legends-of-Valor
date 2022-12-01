@@ -13,7 +13,7 @@ public class HeroView {
 
     private static String getHelp() {
         String re = "Game Legends of Valor\n";
-        re += "In this game, you can move around using [w]/[s]/[a]/[d]/[t] in the map. You need to reach the monsters' Nexus to win\n";
+        re += "In this game, you can move around using [w]/[s]/[a]/[d] in the map. You need to reach the monsters' Nexus to win\n";
         re += "You can buy items in your Nexus\n";
         re += "If the monster entered your Nexus, you failed and game is over\n";
 
