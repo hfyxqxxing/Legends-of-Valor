@@ -37,30 +37,4 @@ public class TestCharacter {
 
     }
 
-    @Test
-    public void TestHero() {
-        Hero hero = new Hero(new Name("HeroA"), new HP(1000), new Level(1), new Defense(100), new Strength(200), new MP(500), new Dexterity(300), new Agility(200), new Gold(200), new Hand(2), new Experience(80), "Warrior");
-
-        Assertions.assertEquals(hero.getName().get(), "HeroA");
-        Assertions.assertEquals(hero.getHP().get(), 1000);
-        Assertions.assertEquals(hero.getLevel().get(), 1);
-        Assertions.assertEquals(hero.getDefense().get(), 100);
-        Assertions.assertEquals(hero.getStrength().get(), 200);
-        Assertions.assertEquals(hero.getMP().get(), 500);
-        Assertions.assertEquals(hero.getDexterity().get(), 300);
-        Assertions.assertEquals(hero.getAgility().get(), 200);
-        Assertions.assertEquals(hero.getGold().get(), 200);
-        Assertions.assertEquals(hero.getExperience().get(), 80);
-        Assertions.assertEquals(hero.getHands().get(), 2);
-        Assertions.assertEquals(hero.getHeroType(), "Warrior");
-
-        // System.out.println(hero.getHeader());
-        // System.out.println(hero.getBody());
-        String expectedHeader = "[Type] Name                    Level HP    Defense  Strength   MP    Dexterity  Agility    Gold  Hands Experience";
-        String expectedBody = "[Warrior] HeroA                1     1000  100      200        500   300        200        200   2     80        ";
-
-        Assertions.assertEquals(expectedHeader, hero.getHeader());
-        Assertions.assertEquals(expectedBody, hero.getBody());
-
-    }
 }

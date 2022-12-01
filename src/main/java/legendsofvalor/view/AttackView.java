@@ -10,6 +10,19 @@ import legendsofvalor.utils.UserInput;
 import legendsofvalor.world.WorldMap;
 
 public class AttackView {
+    private static void reward(Monster monter) {
+        int goldReward = monter.getLevel().get() * 500;
+        int expReward = monter.getLevel().get() * 2;
+        ColorPrint.green("All heroes earned " + goldReward + " gold and " + expReward + " experience");
+        ArrayList<Hero> heroes = WorldMap.getInstance().getHeroes();
+        for (Hero hero : heroes) {
+            hero.getGold().increase(goldReward);
+            hero.getExperience().increase(expReward);
+            hero.checkLevelUp();
+        }
+    }
+
+
     public static boolean view(Hero hero) {
         ArrayList<Monster> monsters = WorldMap.getInstance().getAttackScope(hero);
         if (monsters.size() == 0) {
@@ -28,6 +41,7 @@ public class AttackView {
         if (curMonster.getHP().get() <= 0) {
             WorldMap.getInstance().removeMonster(curMonster);
             ColorPrint.info("You have killed the monster successfully.");
+            reward(curMonster);
         }
         return true;
     }

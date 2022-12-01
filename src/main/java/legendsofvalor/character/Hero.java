@@ -10,7 +10,7 @@ import legendsofvalor.world.Position;
 import legendsofvalor.world.WorldCell;
 import legendsofvalor.world.WorldMap;
 
-public class Hero extends Character {
+public abstract class Hero extends Character {
     private Strength strength;
     private MP mp;
     private Dexterity dexterity;
@@ -160,15 +160,7 @@ public class Hero extends Character {
         }
     }
 
-    protected void levelUp() {
-        if (this instanceof WarriorHero) {
-            ((WarriorHero) this).levelUp();
-        } else if (this instanceof SorcererHero) {
-            ((SorcererHero) this).levelUp();
-        } else if (this instanceof PaladinHero) {
-            ((PaladinHero) this).levelUp();
-        }
-    }
+    protected abstract void levelUp();
 
     public String attack(Monster monster) {
         if (monster == null) {
