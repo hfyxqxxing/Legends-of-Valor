@@ -7,7 +7,7 @@ package legendsofvalor.item;
 import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 
-public class Weapon extends Item implements EffectToHero {
+public class Weapon extends Item  {
 
     private int damage;
     private int hands;
@@ -18,12 +18,6 @@ public class Weapon extends Item implements EffectToHero {
         this.hands = hands;
     }
 
-    @Override
-    public void effect(Hero hero) {
-        /** This should be implemented in hero, adding or subsituting the weapon of hero */
-        //        hero.equip_weapon(this);
-        System.out.println("Hero equipped a weapon");
-    }
 
     public int getDamage() {
         return damage;

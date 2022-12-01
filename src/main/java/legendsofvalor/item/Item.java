@@ -19,6 +19,7 @@ public abstract class Item implements InventoryItem, MarketItem {
         this.sale = sale;
     }
 
+    /**Getter and Setter---------------------------------*/
     public String getName() {
         return name;
     }

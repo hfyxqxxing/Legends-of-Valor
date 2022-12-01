@@ -8,7 +8,7 @@ public class PotionRevival extends PotionFunction {
         super("Revival", powerUp);
     }
 
-    /** The effect here actually should be refill all HP and MP. No MAX_HP/MP now */
+    /** The effect here actually should refill all HP and MP */
     @Override
     public void effect(Hero hero) {
         ColorPrint.plain("Hero " + hero.getName() + "'s MP increased by " + powerUp + ".");

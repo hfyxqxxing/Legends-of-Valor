@@ -11,6 +11,6 @@ public class CellKoulou extends AccessibleCell {
 
         @Override
         public void effect(Hero hero) {
-                // hero.getStrength().increase(20);
+                 hero.getStrength().increase(20);
         }
 }

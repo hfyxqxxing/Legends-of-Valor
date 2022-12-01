@@ -11,7 +11,7 @@ public class CellBush extends AccessibleCell {
 
     @Override
     public void effect(Hero hero) {
-        // hero.getDexterity().increase(20);
+         hero.getDexterity().increase(20);
     }
 
 }

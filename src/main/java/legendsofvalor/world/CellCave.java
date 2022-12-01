@@ -11,7 +11,7 @@ public class CellCave extends AccessibleCell {
 
     @Override
     public void effect(Hero hero) {
-        // hero.getAgility().increase(20);
+         hero.getAgility().increase(20);
     }
 
 }

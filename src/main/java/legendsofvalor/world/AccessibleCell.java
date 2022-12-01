@@ -12,7 +12,10 @@ public abstract class AccessibleCell implements WorldCell, EffectToHero {
     protected Hero hero = null;
     protected Monster monster = null;
 
+    @Override
+    public void effect(Hero hero) {}
 
+    /**Getter and Setter--------------------------------------------------------------*/
     @Override
     public char getSymbol() {
         return symbol;
@@ -23,9 +26,6 @@ public abstract class AccessibleCell implements WorldCell, EffectToHero {
         return name;
     }
 
-    @Override
-    public void effect(Hero hero) {
-    }
 
     @Override
     public boolean isAccessible() {
@@ -69,6 +69,7 @@ public abstract class AccessibleCell implements WorldCell, EffectToHero {
         this.monster = monster;
     }
 
+    /**Print Messages*/
     @Override
     public String toString() {
         String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "true";

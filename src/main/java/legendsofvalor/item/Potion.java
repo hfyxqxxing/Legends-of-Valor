@@ -16,8 +16,19 @@ public class Potion extends Item implements EffectToHero {
     public Potion(String name, int level, int price, int sale, int powerUp) {
         super(name, level, price, sale);
         this.powerUp = powerUp;
-        this.potionFunctions = new ArrayList<PotionFunction>();
+        this.potionFunctions = new ArrayList<>();
     }
+
+
+    /**Effect to a hero. Are overloaded by subclasses*/
+    @Override
+    public void effect(Hero hero) {
+        for (PotionFunction potionFunction : potionFunctions) {
+            potionFunction.effect(hero);
+        }
+    }
+
+    /**Basic functions. Getter and Setter. Print messages--------------------------*/
 
     public int getPowerUp() {
         return powerUp;
@@ -28,13 +39,6 @@ public class Potion extends Item implements EffectToHero {
             return;
         }
         this.powerUp = powerUp;
-    }
-
-    @Override
-    public void effect(Hero hero) {
-        for (PotionFunction potionFunction : potionFunctions) {
-            potionFunction.effect(hero);
-        }
     }
 
     public String getItemType() {
