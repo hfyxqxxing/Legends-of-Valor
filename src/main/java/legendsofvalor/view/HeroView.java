@@ -35,9 +35,9 @@ public class HeroView {
         while (true) {
             String comm;
             if (WorldMap.getInstance().isInNexusHero(hero.getPosition())) {
-                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [q] for quit, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [9] for market, [0] for all hero and monsters' info. (edit weapon/armor, go to the market, show info do not count as a turn) ");
+                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [m] for map, [q] for quit \n[1] attack, [2] spell, [3] potion, [4] weapon, [5] armor, [6] skip turn, [7] return to nexus, [8] teleport, [9] market, [0] show info. (edit weapon/armor, go to the market, show info do not count as a turn) ");
             } else {
-                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [q] for quit, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [0] for all hero and monsters' info. (edit weapon/armor, show info do not count as a turn) ");
+                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [m] for map, [q] for quit \n[1] attack, [2] spell, [3] potion, [4] weapon, [5] armor, [6] skip turn, [7] return to nexus, [8] teleport, [0] show info. (edit weapon/armor, show info do not count as a turn) ");
             }
             comm = UserInput.getInstance().getString().trim().toLowerCase();
             if (comm.equals("w")) {
@@ -74,6 +74,10 @@ public class HeroView {
             }
             if (comm.equals("i")) {
                 ColorPrint.plain(hero.getInventory());
+                continue;
+            }
+            if (comm.equals("m")) {
+                ColorPrint.plain(WorldMap.getInstance());
                 continue;
             }
             if (comm.equals("q")) {
