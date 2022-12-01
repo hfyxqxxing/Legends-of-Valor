@@ -6,7 +6,6 @@ import legendsofvalor.character.Hero;
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
 import legendsofvalor.utils.UserInput;
-import legendsofvalor.utils.GameUtils;
 
 public class ArmorView {
     public static void view(Hero curHero) {

@@ -3,8 +3,7 @@ package legendsofvalor.character;
 import org.junit.jupiter.api.Test;
 
 import legendsofvalor.item.Armor;
-import legendsofvalor.item.Potion;
-import legendsofvalor.item.Spell;
+
 // import legendsofvalor.item.SpellTypeCreator;
 import legendsofvalor.item.Weapon;
 

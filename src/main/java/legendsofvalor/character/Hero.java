@@ -7,7 +7,6 @@ import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
 import legendsofvalor.world.CellKoulou;
 import legendsofvalor.world.Position;
-import legendsofvalor.world.WorldCell;
 import legendsofvalor.world.WorldMap;
 
 public abstract class Hero extends Character {

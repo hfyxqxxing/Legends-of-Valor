@@ -1,6 +1,5 @@
 package legendsofvalor.world;
 
-import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 
 public class CellCave extends AccessibleCell {
