@@ -51,6 +51,9 @@ public class Monster extends Character {
             return this.getName().get() + " attack hero" + hero.getName().get() + ", but " + hero.getName().get() + " dodged the attack!";
         }
         int getAttackDamage = this.getDamage().get() - hero.getDefense().get();
+        if (hero.getArmor() != null) {
+            getAttackDamage -= hero.getArmor().getDefense();
+        }
         if (getAttackDamage < 0) {
             getAttackDamage = 0;
         }

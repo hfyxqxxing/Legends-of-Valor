@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 import legendsofvalor.character.Character;
 import legendsofvalor.character.Hero;
+import legendsofvalor.character.Monster;
 import legendsofvalor.item.*;
+import legendsofvalor.world.WorldMap;
 
 public class GameUtils {
     // print table of items with number
@@ -52,6 +54,18 @@ public class GameUtils {
         ColorPrint.plain(getCharacterTable(characters));
         int index = UserInput.getInstance().getChoice(1, characters.size());
         return characters.get(index);
+    }
+
+    public static void reward(Monster monter) {
+        int goldReward = monter.getLevel().get() * 500;
+        int expReward = monter.getLevel().get() * 2;
+        ColorPrint.green("All heroes earned " + goldReward + " gold and " + expReward + " experience");
+        ArrayList<Hero> heroes = WorldMap.getInstance().getHeroes();
+        for (Hero hero : heroes) {
+            hero.getGold().increase(goldReward);
+            hero.getExperience().increase(expReward);
+            hero.checkLevelUp();
+        }
     }
 
 }

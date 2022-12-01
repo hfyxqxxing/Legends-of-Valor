@@ -10,10 +10,10 @@ import legendsofvalor.utils.UserInput;
 public class WeaponView {
     public static void view(Hero curHero) {
         while (true) {
-            ColorPrint.green("Current Hero's Equippted Weapon:\n");
+            ColorPrint.green("Current Hero's Equippted Weapon:");
             ColorPrint.plain(curHero.getEquippedWeaponList());
-            ColorPrint.green("Current Hero's Weapon Inventory:\n");
-            System.out.println(curHero.getInventory().getPotionString());
+            ColorPrint.green("Current Hero's Weapon Inventory:");
+            System.out.println(curHero.getInventory().getWeaponString());
             ColorPrint.query(
                     "Please enter [1] to equip more weapon, enter [2] to unload a weapon, or enter [0] to cancel and go back:");
             int comm = UserInput.getInstance().getChoice(0, 2);

@@ -170,21 +170,39 @@ public class ConfigurationAdaptor {
 
     private void loadSpell() {
         // load ice spell
-        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 250, 5));
-        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 100, 5));
-        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 350, 5));
-        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 300, 5));
+        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 25, 5));
+        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 10, 5));
+        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 35, 5));
+        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 30, 5));
         // load fire spell
-        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 300, 5));
-        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 100, 5));
-        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 150, 5));
-        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 1000, 5));
-        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 950, 5));
+        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 30, 5));
+        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 15, 5));
+        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 95, 5));
         // load lightning spell
-        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 150, 5));
-        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 400, 5));
-        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 200, 5));
-        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 200, 5));
+        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 15, 5));
+        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 40, 5));
+        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 20, 5));
+        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 20, 5));
+
+        // repeat
+        // load ice spell
+        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 25, 5));
+        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 10, 5));
+        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 35, 5));
+        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 30, 5));
+        // load fire spell
+        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 30, 5));
+        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 15, 5));
+        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 95, 5));
+        // load lightning spell
+        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 15, 5));
+        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 40, 5));
+        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 20, 5));
+        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 20, 5));
     }
 
     public ArrayList<Hero> getHeroes() {

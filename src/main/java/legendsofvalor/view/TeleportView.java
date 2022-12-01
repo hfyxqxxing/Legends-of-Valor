@@ -32,7 +32,7 @@ public class TeleportView {
             int random = ThreadLocalRandom.current().nextInt(0, possiblePosition.size());
             Position teleportPosition = possiblePosition.get(random);
             WorldMap.getInstance().moveTo(hero, teleportPosition);
-            ColorPrint.green("You have teleported to " + targetHero.getName() + " nearby successfully.");
+            ColorPrint.green("You have teleported to " + targetHero.getName().get() + " nearby successfully.");
             return true;
         }
 

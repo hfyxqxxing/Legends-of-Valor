@@ -37,7 +37,18 @@ public class SpellView {
             return false;
         }
         Monster curMonster = monsters.get(index - 1);
-        curSpell.attack(hero, curMonster);
+        String result = curSpell.attack(hero, curMonster);
+        ColorPrint.info(result);
+        curSpell.use();
+        hero.getMP().decrease(curSpell.getManaCost());
+        if (curSpell.getUsedCount() == curSpell.getQuantity()) {
+            hero.getInventory().removeItem(curSpell);
+        }
+        if (curMonster.getHP().get() <= 0) {
+            WorldMap.getInstance().removeMonster(curMonster);
+            ColorPrint.info("You have killed the monster successfully.");
+            GameUtils.reward(curMonster);
+        }
 
         return true;
 
