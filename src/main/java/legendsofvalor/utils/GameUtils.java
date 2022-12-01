@@ -10,7 +10,6 @@ import java.util.Scanner;
 import legendsofvalor.character.Character;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
-import legendsofvalor.item.*;
 import legendsofvalor.world.WorldMap;
 
 public class GameUtils {

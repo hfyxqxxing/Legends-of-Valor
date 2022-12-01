@@ -1,16 +1,11 @@
 package legendsofvalor.world;
 
 
-import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
-import legendsofvalor.character.WarriorHero;
 import legendsofvalor.utils.ColorPrint;
-import legendsofvalor.utils.InputCheck;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class WorldMap {
     private int rows;

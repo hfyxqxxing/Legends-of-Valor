@@ -8,7 +8,7 @@ public class TestGamePlatform {
 
     @Test
     public void TestGamePlatformCreation() {
-        GamePlatform game = new GamePlatform();
+        // GamePlatform game = new GamePlatform();
         // game.startGame();
         Assertions.assertTrue(true);
         Assertions.assertEquals("Test", "Test"); // Write unit tests like this

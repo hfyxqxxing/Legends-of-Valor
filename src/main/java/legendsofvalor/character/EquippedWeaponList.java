@@ -4,7 +4,6 @@
 package legendsofvalor.character;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import legendsofvalor.item.Weapon;
 import legendsofvalor.utils.GameUtils;

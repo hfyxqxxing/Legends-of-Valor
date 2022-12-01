@@ -1,7 +1,5 @@
 package legendsofvalor.world;
 
-import legendsofvalor.character.Hero;
-
 
 public class CellNexusMonster extends AccessibleCell {
 

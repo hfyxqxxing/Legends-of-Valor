@@ -4,7 +4,6 @@ import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 import legendsofvalor.character.WarriorHero;
-import legendsofvalor.utils.InputCheck;
 import legendsofvalor.world.AccessibleCell;
 import legendsofvalor.world.Position;
 import legendsofvalor.world.WorldMap;
@@ -12,7 +11,7 @@ import legendsofvalor.world.WorldMapCreator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class TestMap {
 
