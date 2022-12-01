@@ -25,7 +25,7 @@ public class GamePlatform {
     private void initTeam(ArrayList<Hero> all_heroes, int lane) {
         while (true) {
             int index = UserInput.getInstance().getChoice(1, all_heroes.size());
-            if (WorldMap.getInstance().getHeroes().contains(all_heroes.get(index))) {
+            if (WorldMap.getInstance().getHeroes().contains(all_heroes.get(index - 1))) {
                 ColorPrint.error("You have already selected this hero. Please enter a valid index:");
                 continue;
             }

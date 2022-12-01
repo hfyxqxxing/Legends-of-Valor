@@ -35,9 +35,9 @@ public class HeroView {
         while (true) {
             String comm;
             if (WorldMap.getInstance().isInNexusHero(hero.getPosition())) {
-                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [9] for market, [0] for all hero and monsters' info. (edit weapon/armor, go to the market, show info do not count as a turn) ");
+                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [q] for quit, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [9] for market, [0] for all hero and monsters' info. (edit weapon/armor, go to the market, show info do not count as a turn) ");
             } else {
-                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [0] for all hero and monsters' info. (edit weapon/armor, show info do not count as a turn) ");
+                ColorPrint.plain("Enter [w]/[s]/[a]/[d] to move arouund, [h] for help, [i] for inventory, [q] for quit, [1] for attack, [2] for use spell, [3] for use potion, [4] for edit weapon, [5] for edit armor, [6] for skip, [7] for return to nexus, [8] for teleport, [0] for all hero and monsters' info. (edit weapon/armor, show info do not count as a turn) ");
             }
             comm = UserInput.getInstance().getString().trim().toLowerCase();
             if (comm.equals("w")) {
@@ -71,6 +71,14 @@ public class HeroView {
             if (comm.equals("h")) {
                 ColorPrint.plain(getHelp());
                 continue;
+            }
+            if (comm.equals("i")) {
+                ColorPrint.plain(hero.getInventory());
+                continue;
+            }
+            if (comm.equals("q")) {
+                ColorPrint.green("Game Over");
+                System.exit(0);
             }
             if (comm.equals("1")) {
                 if (AttackView.view(hero)) {
