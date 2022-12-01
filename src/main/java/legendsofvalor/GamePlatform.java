@@ -31,6 +31,7 @@ public class GamePlatform {
             }
             Hero curHero = all_heroes.get(index - 1);
             Position position = WorldMap.getInstance().getHeroInitPosition(lane);
+            curHero.setRevivePosition(position);
             WorldMap.getInstance().register(curHero, position);
 
             return;
