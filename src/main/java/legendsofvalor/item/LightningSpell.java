@@ -1,6 +1,6 @@
 /*
  * This defines a special kinds of SpellType.
- * When doing attact, the attact method will be called to do the damage.
+ * When doing attack, the attack method will be called to do the damage.
  */
 package legendsofvalor.item;
 
