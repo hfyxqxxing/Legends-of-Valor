@@ -5,6 +5,7 @@ package legendsofvalor.character;
 
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.world.CellBush;
 import legendsofvalor.world.CellCave;
 import legendsofvalor.world.CellKoulou;
 import legendsofvalor.world.Position;
@@ -211,7 +212,7 @@ public abstract class Hero extends Character {
     }
 
     public String getDexterityString() {
-        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellCave) {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellBush) {
             return getDexterity().get() + "+" + (int) (getDexterity().get() * 0.1);
         } else {
             return "" + getDexterity().get();
@@ -219,26 +220,27 @@ public abstract class Hero extends Character {
     }
 
     public String getHeader() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience","Position");
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience", "Position");
         return re;
     }
+
     public String getHeaderAll() {
         String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience");
         return re;
     }
 
     public String getBody() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
         return re;
     }
 
     public String getBodyAll() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get());
         return re;
     }
 
     public String toString() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get(),getPosition());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
         return re;
     }
 
