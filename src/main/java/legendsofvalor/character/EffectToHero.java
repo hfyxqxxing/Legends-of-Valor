@@ -1,7 +1,7 @@
 package legendsofvalor.character;
 
 
-public interface Effect_to_Hero {
+public interface EffectToHero {
 
     /** 我觉得不如分开给cell和potion各自写各自的effect。理论上是执行了这样一个interface但是会导致用的时候名字相同 */
 

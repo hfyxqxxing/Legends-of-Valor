@@ -3,6 +3,7 @@
  */
 
 package legendsofvalor.character;
+
 import legendsofvalor.world.Position;
 
 
@@ -69,8 +70,10 @@ public abstract class Character {
 
     // the header for character printout
     public abstract String getHeader();
+    public abstract String getHeaderAll();
 
     // the body for character printout
     public abstract String getBody();
+    public abstract String getBodyAll();
 
 }

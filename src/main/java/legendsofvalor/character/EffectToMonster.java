@@ -1,6 +1,6 @@
 package legendsofvalor.character;
 
-public interface Effect_to_Monster {
+public interface EffectToMonster {
 
     void effect(Monster monster);
 }

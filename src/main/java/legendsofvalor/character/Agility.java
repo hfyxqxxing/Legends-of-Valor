@@ -1,5 +1,5 @@
 /*
- * Agility is the ability to dodge the attact
+ * Agility is the ability to dodge the attack
  * a double value between 0 and 1
  */
 package legendsofvalor.character;

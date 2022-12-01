@@ -164,5 +164,9 @@ public class ColorPrint {
     public static void plain(String str) {
         System.out.println(str);
     }
+
+    public static void plain(Object obj) {
+        System.out.println(obj.toString());
+    }
 }
 

@@ -4,7 +4,6 @@ import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 import legendsofvalor.character.WarriorHero;
-import legendsofvalor.utils.InputCheck;
 import legendsofvalor.world.AccessibleCell;
 import legendsofvalor.world.Position;
 import legendsofvalor.world.WorldMap;
@@ -12,15 +11,16 @@ import legendsofvalor.world.WorldMapCreator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class TestMap {
 
     @Test
     public void TestMapCreator() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(7, 0));
@@ -31,8 +31,9 @@ public class TestMap {
     @Test
     public void TestAround() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(3, 0));
@@ -48,8 +49,9 @@ public class TestMap {
     @Test
     public void TestAttackScope() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Hero h2 = new WarriorHero("Gaerdal_Ironhand2", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
@@ -76,8 +78,9 @@ public class TestMap {
     @Test
     public void TestCanMove() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(3, 1));
@@ -112,8 +115,9 @@ public class TestMap {
     @Test
     public void TestMove() {
         double[] input = {0.2, 0.2, 0.2};
-        WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
-        WorldMap m = wm.create();
+        // WorldMapCreator wm = new WorldMapCreator(8, 8, input[0], input[1], input[2], 2);
+        // WorldMap m = wm.create();
+        WorldMap m = WorldMapCreator.create(8, 8, input[0], input[1], input[2], 2);
         Hero h = new WarriorHero("Gaerdal_Ironhand", 100, 1, 44, 700, 100, 600, 500, 12350, 4, 7);
         Monster monster = new DragonMonster("Desghidorrah", 300, 8, 400, 40, 35);
         m.register(h, new Position(4, 0));
@@ -121,16 +125,16 @@ public class TestMap {
         System.out.println(m);
         Position newone = m.canMoveTo(h, "Up");
         if (newone != null) {
-            m.MoveTo(h, newone);
+            m.moveTo(h, newone);
         }
-        Position m_one = m.canMoveTo(monster);
+        Position m_one = m.canMoveDown(monster);
         if (m_one != null) {
-            m.MoveTo(monster, m_one);
+            m.moveTo(monster, m_one);
         }
         System.out.println(m);
         Position newone2 = m.canMoveTo(h, "Up");
         if (newone2 != null) {
-            m.MoveTo(h, newone2);
+            m.moveTo(h, newone2);
         }
         System.out.println(m);
         System.out.println(m.getAccessibleCell(new Position(3, 0)));

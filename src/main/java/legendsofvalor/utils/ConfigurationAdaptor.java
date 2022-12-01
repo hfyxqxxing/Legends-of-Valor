@@ -144,9 +144,9 @@ public class ConfigurationAdaptor {
     }
 
     private void loadPotion() {
-        Potions.add(PotionCreator.create("Healing_Potion", 1, 250, 125, 100, "Healing"));
+        Potions.add(PotionCreator.create("Healing_Potion", 1, 250, 125, 100, "HP"));
         Potions.add(PotionCreator.create("Strength_Potion", 1, 200, 100, 75, "Strength"));
-        Potions.add(PotionCreator.create("Magic_Potion", 1, 350, 175, 100, "Mana"));
+        Potions.add(PotionCreator.create("Magic_Potion", 1, 350, 175, 100, "MP"));
         Potions.add(PotionCreator.create("Luck_Elixir", 1, 400, 200, 50, "Agility"));
         Potions.add(PotionCreator.create("Luck_Elixir", 2, 500, 250, 65, "Agility"));
         Potions.add(PotionCreator.create("Mermaid_Tears", 1, 500, 250, 80, "HP/MP/Strength/Agility"));
@@ -155,25 +155,54 @@ public class ConfigurationAdaptor {
         Potions.add(PotionCreator.create("Ambrosia", 2, 800, 400, 120, "HP/MP/Strength/Dexterity/Defense/Agility"));
         Potions.add(PotionCreator.create("Ambrosia", 3, 1000, 500, 150, "HP/MP/Strength/Dexterity/Defense/Agility"));
         Potions.add(PotionCreator.create("Revival", 3, 1000, 500, 150, "Revival"));
+        Potions.add(PotionCreator.create("Healing_Potion", 1, 300, 125, 100, "HP"));
+        Potions.add(PotionCreator.create("Strength_Potion", 1, 250, 100, 75, "Strength"));
+        Potions.add(PotionCreator.create("Magic_Potion", 1, 325, 175, 100, "MP"));
+        Potions.add(PotionCreator.create("Luck_Elixir", 1, 410, 200, 50, "Agility"));
+        Potions.add(PotionCreator.create("Luck_Elixir", 2, 520, 250, 65, "Agility"));
+        Potions.add(PotionCreator.create("Mermaid_Tears", 1, 530, 250, 80, "HP/MP/Strength/Agility"));
+        Potions.add(PotionCreator.create("Mermaid_Tears", 2, 820, 425, 100, "HP/MP/Strength/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 1, 400, 250, 100, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 2, 700, 400, 120, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Ambrosia", 3, 1100, 500, 150, "HP/MP/Strength/Dexterity/Defense/Agility"));
+        Potions.add(PotionCreator.create("Revival", 3, 1100, 500, 150, "Revival"));
     }
 
     private void loadSpell() {
         // load ice spell
-        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 250, 5));
-        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 100, 5));
-        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 350, 5));
-        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 300, 5));
+        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 25, 5));
+        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 10, 5));
+        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 35, 5));
+        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 30, 5));
         // load fire spell
-        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 300, 5));
-        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 100, 5));
-        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 150, 5));
-        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 1000, 5));
-        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 950, 5));
+        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 30, 5));
+        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 15, 5));
+        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 95, 5));
         // load lightning spell
-        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 150, 5));
-        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 400, 5));
-        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 200, 5));
-        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 200, 5));
+        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 15, 5));
+        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 40, 5));
+        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 20, 5));
+        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 20, 5));
+
+        // repeat
+        // load ice spell
+        Spells.add(SpellCreator.create("Ice", "Snow_Cannon", 1, 500, 250, 650, 25, 5));
+        Spells.add(SpellCreator.create("Ice", "Ice_Blade", 1, 250, 125, 460, 10, 5));
+        Spells.add(SpellCreator.create("Ice", "Frost_Blizzard", 1, 750, 375, 850, 35, 5));
+        Spells.add(SpellCreator.create("Ice", "Arctic_Storm", 2, 700, 350, 800, 30, 5));
+        // load fire spell
+        Spells.add(SpellCreator.create("Fire", "Flame_Tornado", 1, 700, 350, 850, 30, 5));
+        Spells.add(SpellCreator.create("Fire", "Breath_of_Fire", 1, 350, 175, 450, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Heat_Wave", 1, 450, 225, 600, 15, 5));
+        Spells.add(SpellCreator.create("Fire", "Lava_Comet", 3, 800, 400, 1000, 10, 5));
+        Spells.add(SpellCreator.create("Fire", "Hell_Storm", 2, 600, 300, 950, 95, 5));
+        // load lightning spell
+        Spells.add(SpellCreator.create("Lightning", "Lightning_Dagger", 1, 400, 200, 500, 15, 5));
+        Spells.add(SpellCreator.create("Lightning", "Thunder_Blast", 1, 750, 375, 950, 40, 5));
+        Spells.add(SpellCreator.create("Lightning", "Electric_Arrows", 3, 550, 225, 650, 20, 5));
+        Spells.add(SpellCreator.create("Lightning", "Spark_Needles", 2, 500, 250, 600, 20, 5));
     }
 
     public ArrayList<Hero> getHeroes() {

@@ -12,19 +12,19 @@ public class PotionCreator {
         Potion p = new Potion(name, level, price, sale, powerUp);
         String[] funcitonList = funcitons.split("/");
         for (String function : funcitonList) {
-            if (function == "Dexterity") {
+            if (function.equals("Dexterity")) {
                 p.addFunction(new PotionDexterity(powerUp));
-            } else if (function == "Defense") {
+            } else if (function.equals("Defense")) {
                 p.addFunction(new PotionDefense(powerUp));
-            } else if (function == "Strength") {
+            } else if (function.equals("Strength")) {
                 p.addFunction(new PotionStrength(powerUp));
-            } else if (function == "Revival") {
+            } else if (function.equals("Revival")) {
                 p.addFunction(new PotionRevival(powerUp));
-            } else if (function == "HP") {
+            } else if (function.equals("HP")) {
                 p.addFunction(new PotionHP(powerUp));
-            } else if (function == "MP") {
+            } else if (function.equals("MP")) {
                 p.addFunction(new PotionMP(powerUp));
-            } else if (function == "Agility") {
+            } else if (function.equals("Agility")) {
                 p.addFunction(new PotionAgility(powerUp));
             }
         }

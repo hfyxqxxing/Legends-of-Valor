@@ -5,8 +5,13 @@ package legendsofvalor.character;
 
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.world.CellBush;
+import legendsofvalor.world.CellCave;
+import legendsofvalor.world.CellKoulou;
+import legendsofvalor.world.Position;
+import legendsofvalor.world.WorldMap;
 
-public class Hero extends Character {
+public abstract class Hero extends Character {
     private Strength strength;
     private MP mp;
     private Dexterity dexterity;
@@ -18,6 +23,7 @@ public class Hero extends Character {
     private String heroType;
     private EquippedWeaponList equippedWeaponList;
     private Armor armor;
+    private Position revivePosition;
 
     public Hero(Name name, HP hp, Level level, Defense defense, Strength strength, MP mp, Dexterity dexterity, Agility agility, Gold gold, Hand hands, Experience experience, String heroType) {
         super(name, hp, level, defense);
@@ -36,6 +42,14 @@ public class Hero extends Character {
 
     public Hero(String name, int hp, int level, int defense, int strength, int mp, int dexterity, int agility, int gold, int hands, int experience, String heroType) {
         this(new Name(name), new HP(hp), new Level(level), new Defense(defense), new Strength(strength), new MP(mp), new Dexterity(dexterity), new Agility(agility), new Gold(gold), new Hand(hands), new Experience(experience), heroType);
+    }
+
+    public void setRevivePosition(Position revivePosition) {
+        this.revivePosition = revivePosition;
+    }
+
+    public Position getRevivePosition() {
+        return revivePosition;
     }
 
     public Strength getStrength() {
@@ -131,7 +145,12 @@ public class Hero extends Character {
     }
 
     public int getAttackDamage() {
-        return (int) ((getWeaponDamage() + strength.get()) * 0.05);
+        int tmpStreangth = strength.get();
+        if (WorldMap.getInstance().getCell(getPosition()) instanceof CellKoulou) {
+            tmpStreangth *= 1.1;
+        }
+
+        return (int) ((getWeaponDamage() + tmpStreangth) * 0.05);
     }
 
     public void checkLevelUp() {
@@ -142,15 +161,7 @@ public class Hero extends Character {
         }
     }
 
-    protected void levelUp() {
-        if (this instanceof WarriorHero) {
-            ((WarriorHero) this).levelUp();
-        } else if (this instanceof SorcererHero) {
-            ((SorcererHero) this).levelUp();
-        } else if (this instanceof PaladinHero) {
-            ((PaladinHero) this).levelUp();
-        }
-    }
+    protected abstract void levelUp();
 
     public String attack(Monster monster) {
         if (monster == null) {
@@ -184,18 +195,52 @@ public class Hero extends Character {
         }
     }
 
+    public String getStrengthString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellKoulou) {
+            return getStrength().get() + "+" + (int) (getStrength().get() * 0.1);
+        } else {
+            return "" + getStrength().get();
+        }
+    }
+
+    public String getAgilityString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellCave) {
+            return getAgility().get() + "+" + (int) (getAgility().get() * 0.1);
+        } else {
+            return "" + getAgility().get();
+        }
+    }
+
+    public String getDexterityString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellBush) {
+            return getDexterity().get() + "+" + (int) (getDexterity().get() * 0.1);
+        } else {
+            return "" + getDexterity().get();
+        }
+    }
+
     public String getHeader() {
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience", "Position");
+        return re;
+    }
+
+    public String getHeaderAll() {
         String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[Type] Name", "Level", "HP", "Defense", "Strength", "MP", "Dexterity", "Agility", "Gold", "Hands", "Experience");
         return re;
     }
 
     public String getBody() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
+        return re;
+    }
+
+    public String getBodyAll() {
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get());
         return re;
     }
 
     public String toString() {
-        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrength().get(), getMP().get(), getDexterity().get(), getAgility().get(), getGold().get(), getHands().get(), getExperience().get());
+        String re = String.format("%-30s %-5s %-5s %-8s %-10s %-5s %-10s %-10s %-5s %-5s %-10s %-8s", "[" + getHeroType() + "] " + getName().get(), getLevel().get(), getHP().get(), getDefense().get(), getStrengthString(), getMP().get(), getDexterityString(), getAgilityString(), getGold().get(), getHands().get(), getExperience().get(), getPosition());
         return re;
     }
 

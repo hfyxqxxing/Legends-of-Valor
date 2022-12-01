@@ -1,24 +1,24 @@
 /*
  * This defines a special kinds of SpellType.
- * When doing attact, the attact method will be called to do the damage.
+ * When doing attack, the attack method will be called to do the damage.
  */
 package legendsofvalor.item;
 
 import legendsofvalor.character.*;
 
-public class LightningSpell extends Spell implements Effect_to_Hero, Effect_to_Monster {
+public class LightningSpell extends Spell {
     public LightningSpell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale, damage, manaCost, quantity);
         spellType = "Lightning";
     }
 
     @Override
-    public void effect(Hero hero) {
-        // hero.getMP().decrease(manaCost);
-    }
-
-    @Override
-    public void effect(Monster monster) {
-        // monster.getAgility().decrease((int) (monster.getAgility().get() * 0.1));
+    public String attack(Hero hero, Monster monster) {
+        int AgilityDecrease = (int) (monster.getAgility().get() * 0.1);
+        monster.getAgility().decrease(AgilityDecrease);
+        int damage = getAttackDamage(hero, monster);
+        monster.getHP().decrease(damage);
+        String re = monster.getName().get() + " damaged by " + damage + ". agility decreased by " + AgilityDecrease + ". ";
+        return re;
     }
 }

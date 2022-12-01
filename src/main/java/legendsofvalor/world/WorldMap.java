@@ -1,16 +1,11 @@
 package legendsofvalor.world;
 
 
-import legendsofvalor.character.DragonMonster;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
-import legendsofvalor.character.WarriorHero;
 import legendsofvalor.utils.ColorPrint;
-import legendsofvalor.utils.InputCheck;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class WorldMap {
     private int rows;
@@ -20,6 +15,13 @@ public class WorldMap {
     private WorldCell[][] map;
     private ArrayList<Hero> Heroes;
     private ArrayList<Monster> Monsters;
+
+    public static WorldMap getInstance() {
+        if (instance == null) {
+            instance = WorldMapCreator.create();
+        }
+        return instance;
+    }
 
     public WorldMap(int row, int col) {
         this.rows = row;
@@ -37,12 +39,7 @@ public class WorldMap {
         for (AccessibleCell c : rangeCells) {
             if (c.hasMonster()) {
                 result.add(c.getMonster());
-            } else {
-                //                System.out.println("No monster here");
             }
-        }
-        if (result.isEmpty()) {
-            System.out.println("There is no monster around the hero.");
         }
         return result;
     }
@@ -53,8 +50,6 @@ public class WorldMap {
         for (AccessibleCell c : rangeCells) {
             if (c.hasHero()) {
                 result.add(c.getHero());
-            } else {
-                //                System.out.println("No hero here");
             }
         }
         return result;
@@ -71,8 +66,6 @@ public class WorldMap {
                 Position pos = new Position(x + i, y + j);
                 if (getAccessibleCell(pos) != null) {
                     result.add(getAccessibleCell(pos));
-                } else {
-                    //                    System.out.println("outrange or inaccess");
                 }
             }
         }
@@ -95,8 +88,6 @@ public class WorldMap {
         for (Position p : temp) {
             if (getAccessibleCell(p) != null) {
                 result.add(p);
-            } else {
-                System.out.println("outrange or inaccess");
             }
         }
         return result;
@@ -104,14 +95,14 @@ public class WorldMap {
     }
 
     /** Can be used as any permitted movement. teleport/recall/move */
-    public void MoveTo(Hero hero, Position next) {
+    public void moveTo(Hero hero, Position next) {
         Position old = hero.getPosition();
         hero.setPosition(next);
         getAccessibleCell(old).setHero(null);
         getAccessibleCell(next).setHero(hero);
     }
 
-    public void MoveTo(Monster monster, Position next) {
+    public void moveTo(Monster monster, Position next) {
         Position old = monster.getPosition();
         monster.setPosition(next);
         getAccessibleCell(old).setMonster(null);
@@ -119,17 +110,19 @@ public class WorldMap {
     }
 
     /** If there is a monster ahead of it, or the hero is in same line. It should moveto itself.(Staying) */
-    public Position canMoveTo(Monster monster) {
+    public Position canMoveDown(Monster monster) {
         Position new_pos = directionStep(monster.getPosition(), "Down");
         /** Only moves down, so it will not meet with the situation of wall or outrange */
         if (getAccessibleCell(new_pos).hasMonster()) {
-            System.out.println("Already a Monster here");
+            // System.out.println("Already a Monster here");
+            // Already a Monster here
             return monster.getPosition();
         }
         for (int j = -1; j < 2; j++) {
             Position temp = new Position(monster.getPosition().getX(), monster.getPosition().getY() + j);
-            if (getAccessibleCell(temp).hasHero()) {
-                System.out.println("Movement stopped by a hero");
+            if (getAccessibleCell(temp) != null && getAccessibleCell(temp).hasHero()) {
+                // System.out.println("Movement stopped by a hero");
+                // Movement stopped by a hero - Usually not possible
                 return monster.getPosition();
             }
         }
@@ -141,15 +134,13 @@ public class WorldMap {
     public Position canMoveTo(Hero hero, String direction) {
         Position new_pos = directionStep(hero.getPosition(), direction);
         if (getCell(new_pos) == null) {
-            System.out.println("Outrange");
             return null;
         }
         if (!getCell(new_pos).isAccessible()) {
-            System.out.println("Wall");
             return null;
         } else {
             if (getCell(new_pos).hasHero()) {
-                System.out.println("Already a hero here");
+                ColorPrint.error("Already a hero here");
                 return null;
             }
             /** If the monster is in the same line, it cannot move forward */
@@ -157,10 +148,13 @@ public class WorldMap {
                 int x = hero.getPosition().getX();
                 int y = hero.getPosition().getY();
                 for (int j = -1; j < 2; j++) {
+                    if (y + j < 0 || y + j > cols - 1) {
+                        continue;
+                    }
                     Position mon_pos = new Position(x, y + j);
                     if (getCell(mon_pos) != null) {
                         if (getCell(mon_pos).hasMonster()) {
-                            System.out.println("You must kill the enemy to move forward!");
+                            ColorPrint.error("You must kill the enemy to move forward!");
                             return null;
                         }
                     }
@@ -192,7 +186,7 @@ public class WorldMap {
         int lane_from = getLane(fromHero.getPosition());
         int lane_to = getLane(TargetHero.getPosition());
         if (lane_from == lane_to) {
-            return null;
+            return possible;
         }
         ArrayList<Position> adjency = tel_adjaceny(TargetHero.getPosition());
         for (Position p : adjency) {
@@ -245,15 +239,7 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    public boolean register(Hero h) {
-        if (Heroes.size() == 3) {
-            System.out.println("Already full");
-            return false;
-        }
-        Heroes.add(h);
-        return true;
-    }
-
+    /**Generate a hero unit on the map in nexus*/
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
             System.out.println("Already full");
@@ -271,7 +257,7 @@ public class WorldMap {
 
     public Position getHeroInitPosition(int lane) {
         if (lane * 3 < cols && lane >= 0) {
-            return new Position(rows, lane * 3);
+            return new Position(rows - 1, lane * 3);
         } else {
             System.out.println("No such lane nexus");
             return null;
@@ -291,18 +277,25 @@ public class WorldMap {
         return Monsters;
     }
 
-    public void register(Monster m) {
-        Monsters.add(m);
-    }
 
     public void register(Monster m, Position pos) {
         if (Monsters.contains(m)) {
-            System.out.println("Not avaialble");
+            // Should not be same instance
+            return;
+        }
+        // if Nexus occupied, monster will not be added
+        if (getCell(pos).hasMonster()) {
             return;
         }
         m.setPosition(pos);
         getAccessibleCell(pos).setMonster(m);
         Monsters.add(m);
+    }
+
+    public void removeMonster(Monster m) {
+        Position p = m.getPosition();
+        getAccessibleCell(p).setMonster(null);
+        Monsters.remove(m);
     }
 
     public void setMonsters(ArrayList<Monster> monsters) {
@@ -321,9 +314,9 @@ public class WorldMap {
     public WorldCell getCell(Position position) {
         int x = position.getX();
         int y = position.getY();
-        if (x < 0 || x > rows) {
+        if (x < 0 || x >= rows) {
             return null;
-        } else if (y < 0 || y > cols) {
+        } else if (y < 0 || y >= cols) {
             return null;
         }
         return map[x][y];
@@ -332,9 +325,9 @@ public class WorldMap {
     public AccessibleCell getAccessibleCell(Position position) {
         int x = position.getX();
         int y = position.getY();
-        if (x < 0 || x > rows) {
+        if (x < 0 || x >= rows) {
             return null;
-        } else if (y < 0 || y > cols) {
+        } else if (y < 0 || y >= cols) {
             return null;
         } else if (y % 3 == 2) {
             return null;
@@ -430,5 +423,4 @@ public class WorldMap {
         return re;
     }
 
-    /** Moved to TestMap */
 }

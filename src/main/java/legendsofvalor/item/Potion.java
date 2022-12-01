@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import legendsofvalor.character.*;
 
-public class Potion extends Item implements Effect_to_Hero {
+public class Potion extends Item implements EffectToHero {
     protected int powerUp;
     protected ArrayList<PotionFunction> potionFunctions;
 
@@ -45,10 +45,17 @@ public class Potion extends Item implements Effect_to_Hero {
         potionFunctions.add(potionFunction);
     }
 
+    public ArrayList<PotionFunction> getPotionFunctions() {
+        return potionFunctions;
+    }
+
     public String getFunctionsString() {
         String re = "";
         for (PotionFunction potionFunction : potionFunctions) {
             re += potionFunction.getFunction() + "/";
+        }
+        if (re.equals("") ) {
+            return "";
         }
         return re.substring(0, re.length() - 1);
     }

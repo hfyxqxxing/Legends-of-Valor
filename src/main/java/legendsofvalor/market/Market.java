@@ -65,7 +65,7 @@ public class Market {
                 String header = items.get(i).getMarketHeader();
                 re += "     " + header + "\n" + "     " + String.join("", Collections.nCopies(header.length(), "-")) + "\n";
             }
-            re += String.format("%-5s", "[" + i + "]") + items.get(i).getMarketBody() + "\n";
+            re += String.format("%-5s", "[" + (i + 1) + "]") + items.get(i).getMarketBody() + "\n";
         }
 
         return re;

@@ -1,6 +1,5 @@
 package legendsofvalor.world;
 
-import legendsofvalor.character.Effect_to_Hero;
 import legendsofvalor.character.Hero;
 
 public class CellBush extends AccessibleCell {
