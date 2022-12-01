@@ -50,6 +50,7 @@ public class WorldMap {
         return result;
     }
 
+    /** The touchable characters */
     public ArrayList<Hero> getAttackScope(Monster monster) {
         ArrayList<Hero> result = new ArrayList<>();
         ArrayList<AccessibleCell> rangeCells = around(monster.getPosition());
@@ -62,7 +63,7 @@ public class WorldMap {
     }
 
 
-    /** Tested */
+    /** helper for attackscope */
     public ArrayList<AccessibleCell> around(Position position) {
         ArrayList<AccessibleCell> result = new ArrayList<>();
         int x = position.getX();
@@ -78,11 +79,7 @@ public class WorldMap {
         return result;
     }
 
-    /**
-     * 目标英雄的上下左右是相邻的位置，不能比英雄前，直接舍弃up，同时排除了behind monster的位置，因为本线
-     * 的英雄不可能在本线的monster后面，然后排查如果不在表格内放弃，是墙放弃，返回一个判断是否有英雄的位置列表
-     * （也就left和behind或者right和behind了）。还是说八个方向都是adjacent？
-     */
+    /** Teleport judgement */
     public ArrayList<Position> tel_adjaceny(Position position) {
         ArrayList<Position> result = new ArrayList<>();
         int x = position.getX();
@@ -134,7 +131,7 @@ public class WorldMap {
     }
 
 
-    /** Need test whether the position of hero will be changed during detection */
+    /** Movement judgement */
     public Position canMoveTo(Hero hero, String direction) {
         Position new_pos = directionStep(hero.getPosition(), direction);
         if (getCell(new_pos) == null) {
@@ -169,6 +166,7 @@ public class WorldMap {
         return new_pos;
     }
 
+    /** Helper for movement judge */
     public Position directionStep(Position pos, String direction) {
         Position new_pos = new Position(0, 0);
         if (direction.equalsIgnoreCase("Up")) {
@@ -202,7 +200,39 @@ public class WorldMap {
         return possible;
     }
 
-    /** return 0 meaning game is not over */
+
+    /** Generate a hero unit on the map in nexus */
+    public boolean register(Hero h, Position position) {
+        if (Heroes.size() == 3) {
+            System.out.println("Already full");
+            return false;
+        }
+        if (Heroes.contains(h)) {
+            System.out.println("Already exist");
+            return false;
+        }
+        h.setPosition(position);
+        getAccessibleCell(position).setHero(h);
+        Heroes.add(h);
+        return true;
+    }
+
+    /** Generate a monster unit on the map in monster nexus */
+    public void register(Monster m, Position pos) {
+        if (Monsters.contains(m)) {
+            // Should not be same instance
+            return;
+        }
+        // if Nexus occupied, monster will not be added
+        if (getCell(pos).hasMonster()) {
+            return;
+        }
+        m.setPosition(pos);
+        getAccessibleCell(pos).setMonster(m);
+        Monsters.add(m);
+    }
+
+    /** return 0 meaning game is not over. 1 is win, -1 is lose */
     public int checkWin() {
         for (Hero h : Heroes) {
             if (isInNexusMonster(h.getPosition())) {
@@ -218,6 +248,7 @@ public class WorldMap {
     }
 
 
+    /** Getter and Setter--------------------------- */
     public int getRows() {
         return rows;
     }
@@ -243,22 +274,6 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    /** Generate a hero unit on the map in nexus */
-    public boolean register(Hero h, Position position) {
-        if (Heroes.size() == 3) {
-            System.out.println("Already full");
-            return false;
-        }
-        if (Heroes.contains(h)) {
-            System.out.println("Already exist");
-            return false;
-        }
-        h.setPosition(position);
-        getAccessibleCell(position).setHero(h);
-        Heroes.add(h);
-        return true;
-    }
-
     public Position getHeroInitPosition(int lane) {
         if (lane * 3 < cols && lane >= 0) {
             return new Position(rows - 1, lane * 3);
@@ -281,20 +296,6 @@ public class WorldMap {
         return Monsters;
     }
 
-
-    public void register(Monster m, Position pos) {
-        if (Monsters.contains(m)) {
-            // Should not be same instance
-            return;
-        }
-        // if Nexus occupied, monster will not be added
-        if (getCell(pos).hasMonster()) {
-            return;
-        }
-        m.setPosition(pos);
-        getAccessibleCell(pos).setMonster(m);
-        Monsters.add(m);
-    }
 
     public void removeMonster(Monster m) {
         Position p = m.getPosition();
@@ -355,7 +356,7 @@ public class WorldMap {
         }
     }
 
-
+    /** Judgement functions */
     public boolean isInNexusHero(Position position) {
         return map[position.getX()][position.getY()].getSymbol() == ('N');
     }
@@ -390,7 +391,7 @@ public class WorldMap {
         return false;
     }
 
-    /** Need changes */
+    /** Printout the Map with color */
     public String toString() {
         String re = "";
         re += "L0:   X  L1:   X  L2: \n";

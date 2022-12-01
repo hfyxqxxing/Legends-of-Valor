@@ -4,10 +4,11 @@
  */
 package legendsofvalor.world;
 
+import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 
-public abstract class AccessibleCell implements WorldCell {
+public abstract class AccessibleCell implements WorldCell, EffectToHero {
 
     protected char symbol;
     protected String name;
@@ -15,7 +16,11 @@ public abstract class AccessibleCell implements WorldCell {
     protected Hero hero = null;
     protected Monster monster = null;
 
+    @Override
+    public void effect(Hero hero) {
+    }
 
+    /** Getter and Setter-------------------------------------------------------------- */
     @Override
     public char getSymbol() {
         return symbol;
@@ -68,6 +73,7 @@ public abstract class AccessibleCell implements WorldCell {
         this.monster = monster;
     }
 
+    /** Print Messages */
     @Override
     public String toString() {
         String result = "WorldCell{" + "symbol=" + symbol + ", name='" + name + '\'' + ", isAccessible=" + "true";

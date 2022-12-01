@@ -6,7 +6,7 @@ package legendsofvalor.item;
 
 import legendsofvalor.character.*;
 
-public class IceSpell extends Spell {
+public class IceSpell extends Spell implements EffectToMonster {
     public IceSpell(String name, int level, int price, int sale, int damage, int manaCost, int quantity) {
         super(name, level, price, sale, damage, manaCost, quantity);
         spellType = "Ice";
@@ -14,8 +14,7 @@ public class IceSpell extends Spell {
 
     @Override
     public String attack(Hero hero, Monster monster) {
-        int damageDecrease = (int) (monster.getDamage().get() * 0.1);
-        monster.getDamage().decrease(damageDecrease);
+        int damageDecrease = effect(monster);
         int damage = getAttackDamage(hero, monster);
         monster.getHP().decrease(damage);
         String re = monster.getName().get() + " damaged by " + damage + ". damage attribute decreased by " + damageDecrease + ". ";
@@ -23,4 +22,10 @@ public class IceSpell extends Spell {
         return re;
     }
 
+    @Override
+    public int effect(Monster monster) {
+        int damageDecrease = (int) (monster.getDamage().get() * 0.1);
+        monster.getDamage().decrease(damageDecrease);
+        return damageDecrease;
+    }
 }

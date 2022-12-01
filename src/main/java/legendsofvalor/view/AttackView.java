@@ -24,7 +24,7 @@ public class AttackView {
             ColorPrint.error("No monster in attack scope");
             return false;
         }
-        ColorPrint.info("Please choose a monster to attac, or enter [0] to cancel and go back:");
+        ColorPrint.info("Please choose a monster to attack, or enter [0] to cancel and go back:");
         ColorPrint.plain(GameUtils.getCharacterTable(monsters));
         int index = UserInput.getInstance().getChoice(1, monsters.size());
         if (index == 0) {

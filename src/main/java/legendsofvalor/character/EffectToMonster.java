@@ -5,5 +5,6 @@ package legendsofvalor.character;
 
 public interface EffectToMonster {
 
-    void effect(Monster monster);
+    /**Works for all the spell on monsters*/
+    int effect(Monster monster);
 }

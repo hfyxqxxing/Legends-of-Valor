@@ -3,20 +3,13 @@
  */
 package legendsofvalor.item;
 
-import legendsofvalor.character.EffectToHero;
-import legendsofvalor.character.Hero;
 
-public class Armor extends Item implements EffectToHero {
+public class Armor extends Item {
     private int defense;
 
     public Armor(String name, int level, int price, int sale, int defense) {
         super(name, level, price, sale);
         this.defense = defense;
-    }
-
-    @Override
-    public void effect(Hero hero) {
-        // hero.setArmor(this);
     }
 
     public int getDefense() {
@@ -29,6 +22,8 @@ public class Armor extends Item implements EffectToHero {
         }
         this.defense = defense;
     }
+
+    /** Print Messages------------------------------ */
 
     public String getItemType() {
         return "Armor";
