@@ -1,3 +1,6 @@
+/*
+ * Bush cell can boost hero's dexterity
+ */
 package legendsofvalor.world;
 
 import legendsofvalor.character.Hero;
@@ -11,7 +14,7 @@ public class CellBush extends AccessibleCell {
 
     @Override
     public void effect(Hero hero) {
-         hero.getDexterity().increase(20);
+        hero.getDexterity().increase(20);
     }
 
 }

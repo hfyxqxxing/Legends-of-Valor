@@ -1,3 +1,7 @@
+/*
+ * This is the factory class for creating SpellType.
+ * Use by configuration adapter
+ */
 package legendsofvalor.item;
 
 public class WeaponCreator {

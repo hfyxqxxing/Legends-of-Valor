@@ -1,3 +1,9 @@
+/*
+ * This is a singleton. It is widely used in whole game. Use WorldMap.getInstance() to get the instance.
+ * WorldMap knows the heros and monsters in the world.
+ * WorldMap is also responsible for the querying of movement of heros and monsters.
+ */
+
 package legendsofvalor.world;
 
 
@@ -57,7 +63,7 @@ public class WorldMap {
     }
 
 
-    /** helper for attackscope*/
+    /** helper for attackscope */
     public ArrayList<AccessibleCell> around(Position position) {
         ArrayList<AccessibleCell> result = new ArrayList<>();
         int x = position.getX();
@@ -73,7 +79,7 @@ public class WorldMap {
         return result;
     }
 
-    /**Teleport judgement*/
+    /** Teleport judgement */
     public ArrayList<Position> tel_adjaceny(Position position) {
         ArrayList<Position> result = new ArrayList<>();
         int x = position.getX();
@@ -111,12 +117,14 @@ public class WorldMap {
         Position new_pos = directionStep(monster.getPosition(), "Down");
         /** Only moves down, so it will not meet with the situation of wall or outrange */
         if (getAccessibleCell(new_pos).hasMonster()) {
-            return monster.getPosition();
+            // Already a Monster here
+            return null;
         }
         for (int j = -1; j < 2; j++) {
             Position temp = new Position(monster.getPosition().getX(), monster.getPosition().getY() + j);
             if (getAccessibleCell(temp) != null && getAccessibleCell(temp).hasHero()) {
-                return monster.getPosition();
+                // Movement stopped by a hero 
+                return null;
             }
         }
         return new_pos;
@@ -158,7 +166,7 @@ public class WorldMap {
         return new_pos;
     }
 
-    /**Helper for movement judge*/
+    /** Helper for movement judge */
     public Position directionStep(Position pos, String direction) {
         Position new_pos = new Position(0, 0);
         if (direction.equalsIgnoreCase("Up")) {
@@ -193,7 +201,7 @@ public class WorldMap {
     }
 
 
-    /**Generate a hero unit on the map in nexus*/
+    /** Generate a hero unit on the map in nexus */
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
             System.out.println("Already full");
@@ -209,7 +217,7 @@ public class WorldMap {
         return true;
     }
 
-    /**Generate a monster unit on the map in monster nexus*/
+    /** Generate a monster unit on the map in monster nexus */
     public void register(Monster m, Position pos) {
         if (Monsters.contains(m)) {
             // Should not be same instance
@@ -240,7 +248,7 @@ public class WorldMap {
     }
 
 
-    /**Getter and Setter---------------------------*/
+    /** Getter and Setter--------------------------- */
     public int getRows() {
         return rows;
     }
@@ -348,7 +356,7 @@ public class WorldMap {
         }
     }
 
-    /**Judgement functions*/
+    /** Judgement functions */
     public boolean isInNexusHero(Position position) {
         return map[position.getX()][position.getY()].getSymbol() == ('N');
     }
