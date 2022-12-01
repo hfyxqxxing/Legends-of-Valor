@@ -13,8 +13,14 @@ public class IceSpell extends Spell {
     }
 
     @Override
-    public void attack(Hero hero, Monster monster) {
+    public String attack(Hero hero, Monster monster) {
+        int damageDecrease = (int) (monster.getDamage().get() * 0.1);
+        monster.getDamage().decrease(damageDecrease);
+        int damage = getAttackDamage(hero, monster);
+        monster.getHP().decrease(damage);
+        String re = monster.getName().get() + " damaged by " + damage + ". damage attribute decreased by " + damageDecrease + ". ";
 
+        return re;
     }
 
 }

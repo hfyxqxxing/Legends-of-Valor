@@ -116,7 +116,7 @@ public class Inventory extends CharacterAttribute {
                 re += "     " + header + "\n" + "     " + String.join("", Collections.nCopies(header.length(), "-")) + "\n";
 
             }
-            re += String.format("%-5s", "[" + i + 1 + "]") + items.get(i).getInventoryBody() + "\n";
+            re += String.format("%-5s", "[" + (i + 1) + "]") + items.get(i).getInventoryBody() + "\n";
         }
 
         return re;

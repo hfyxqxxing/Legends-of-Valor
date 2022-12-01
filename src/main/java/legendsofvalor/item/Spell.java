@@ -7,6 +7,8 @@
 package legendsofvalor.item;
 
 import legendsofvalor.character.*;
+import legendsofvalor.world.CellBush;
+import legendsofvalor.world.WorldMap;
 
 public abstract class Spell extends Item {
     protected int damage;
@@ -32,6 +34,15 @@ public abstract class Spell extends Item {
             return;
         }
         this.damage = damage;
+    }
+
+    protected int getAttackDamage(Hero hero, Monster monster) {
+        int dexterity = hero.getDexterity().get();
+        if (WorldMap.getInstance().getCell(hero.getPosition()) instanceof CellBush) {
+            dexterity *= 1.1;
+        }
+        int attackDamage = getDamage() + (dexterity / 10000) * getDamage() - monster.getDefense().get();
+        return attackDamage;
     }
 
     public int getManaCost() {
@@ -79,7 +90,7 @@ public abstract class Spell extends Item {
         this.spellType = spellType;
     }
 
-    public abstract void attack(Hero hero, Monster monster);
+    public abstract String attack(Hero hero, Monster monster);
 
 
     // the price should change according to the usedCount

@@ -13,7 +13,12 @@ public class LightningSpell extends Spell {
     }
 
     @Override
-    public void attack(Hero hero, Monster monster) {
-
+    public String attack(Hero hero, Monster monster) {
+        int AgilityDecrease = (int) (monster.getAgility().get() * 0.1);
+        monster.getAgility().decrease(AgilityDecrease);
+        int damage = getAttackDamage(hero, monster);
+        monster.getHP().decrease(damage);
+        String re = monster.getName().get() + " damaged by " + damage + ". agility decreased by " + AgilityDecrease + ". ";
+        return re;
     }
 }
