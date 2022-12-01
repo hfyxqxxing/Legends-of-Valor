@@ -48,7 +48,7 @@ public class MarketView {
                 int index = UserInput.getInstance().getChoice(1, curHero.getInventory().size());
 
                 // sell the item, add gold to hero, put the sold item to market
-                InventoryItem item = curHero.getInventory().get(index + 1);
+                InventoryItem item = curHero.getInventory().get(index - 1);
                 curHero.getGold().increase(((MarketItem) item).getSale());
                 market.addItem((MarketItem) item);
                 curHero.getInventory().removeItem(item);

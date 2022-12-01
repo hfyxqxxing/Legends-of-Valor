@@ -11,7 +11,7 @@ import legendsofvalor.utils.GameUtils;
 public class ArmorView {
     public static void view(Hero curHero) {
         while (true) {
-            ColorPrint.green("Current Hero's Armor:\n");
+            ColorPrint.green("Current Hero's Armor:");
             if (curHero.getArmor() == null) {
                 ColorPrint.plain("No Armor");
             } else {
@@ -38,6 +38,9 @@ public class ArmorView {
                 int index = UserInput.getInstance().getChoice(0, armorList.size());
                 if (index == 0) {
                     return;
+                }
+                if (curHero.getArmor() != null) {
+                    curHero.getInventory().addItem(curHero.getArmor());
                 }
                 Armor curArmor = armorList.get(index - 1);
                 curHero.getInventory().removeItem(curArmor);
