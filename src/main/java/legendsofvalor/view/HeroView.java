@@ -1,3 +1,9 @@
+/*
+ * For each hero's turn, the hero will be redirct to this view
+ * heroes are provided a sort of options, including: moving around, attack, use item, etc.
+ * when hern choosed a specific action, he will be redirected to corresponding view
+ */
+
 package legendsofvalor.view;
 
 import legendsofvalor.character.Hero;

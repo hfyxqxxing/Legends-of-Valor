@@ -1,3 +1,7 @@
+/*
+ * One potion may contains multiple potion funciton
+ * each potion function can power up a specific kind of attribute of hero
+ */
 package legendsofvalor.item;
 
 import legendsofvalor.character.Hero;

@@ -1,3 +1,7 @@
+/*
+ * This is the view of market. Hero can buy and sell items here.
+ * when finished, the hero will return to previous view
+ */
 package legendsofvalor.view;
 
 import legendsofvalor.character.Hero;
@@ -37,7 +41,7 @@ public class MarketView {
                 }
 
                 curHero.getGold().decrease(price);
-                curHero.getInventory().addItem((InventoryItem) market.get(index));
+                curHero.getInventory().addItem((InventoryItem) item);
                 market.removeItem(item);
                 ColorPrint.green(
                         "You have bought " + item.getName() + " successfully. Press Enter to continue...");

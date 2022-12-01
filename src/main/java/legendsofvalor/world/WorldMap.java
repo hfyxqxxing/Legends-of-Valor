@@ -1,3 +1,9 @@
+/*
+ * This is a singleton. It is widely used in whole game. Use WorldMap.getInstance() to get the instance.
+ * WorldMap knows the heros and monsters in the world.
+ * WorldMap is also responsible for the querying of movement of heros and monsters.
+ */
+
 package legendsofvalor.world;
 
 
@@ -114,16 +120,14 @@ public class WorldMap {
         Position new_pos = directionStep(monster.getPosition(), "Down");
         /** Only moves down, so it will not meet with the situation of wall or outrange */
         if (getAccessibleCell(new_pos).hasMonster()) {
-            // System.out.println("Already a Monster here");
             // Already a Monster here
-            return monster.getPosition();
+            return null;
         }
         for (int j = -1; j < 2; j++) {
             Position temp = new Position(monster.getPosition().getX(), monster.getPosition().getY() + j);
             if (getAccessibleCell(temp) != null && getAccessibleCell(temp).hasHero()) {
-                // System.out.println("Movement stopped by a hero");
-                // Movement stopped by a hero - Usually not possible
-                return monster.getPosition();
+                // Movement stopped by a hero 
+                return null;
             }
         }
         return new_pos;
@@ -239,7 +243,7 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    /**Generate a hero unit on the map in nexus*/
+    /** Generate a hero unit on the map in nexus */
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
             System.out.println("Already full");

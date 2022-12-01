@@ -1,3 +1,7 @@
+/*
+ * The coordinate wrapper for the map
+ */
+
 package legendsofvalor.world;
 
 public class Position {

@@ -1,3 +1,9 @@
+/*
+ * This is the spell view. Hero can perform spell attack here.
+ * hero need to choose th spell and the target.
+ * the spell cannot be use if hero's MP is not enough.
+ * return false if spell attack is canceled.
+ */
 package legendsofvalor.view;
 
 import java.util.ArrayList;
@@ -19,7 +25,7 @@ public class SpellView {
         }
         ColorPrint.green("Current Hero's Spell:\n");
         ColorPrint.plain(hero.getInventory().getSpellString());
-        if (hero.getInventory().getSpellString().equals("No spells in inventory")){
+        if (hero.getInventory().getSpellString().equals("No spells in inventory")) {
             System.out.println();
             return false;
         }
