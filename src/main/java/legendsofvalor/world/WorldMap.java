@@ -44,13 +44,8 @@ public class WorldMap {
         for (AccessibleCell c : rangeCells) {
             if (c.hasMonster()) {
                 result.add(c.getMonster());
-            } else {
-                //                System.out.println("No monster here");
             }
         }
-        // if (result.isEmpty()) {
-        //     System.out.println("There is no monster around the hero.");
-        // }
         return result;
     }
 
@@ -60,8 +55,6 @@ public class WorldMap {
         for (AccessibleCell c : rangeCells) {
             if (c.hasHero()) {
                 result.add(c.getHero());
-            } else {
-                //                System.out.println("No hero here");
             }
         }
         return result;
@@ -78,8 +71,6 @@ public class WorldMap {
                 Position pos = new Position(x + i, y + j);
                 if (getAccessibleCell(pos) != null) {
                     result.add(getAccessibleCell(pos));
-                } else {
-                    //                    System.out.println("outrange or inaccess");
                 }
             }
         }
@@ -148,11 +139,9 @@ public class WorldMap {
     public Position canMoveTo(Hero hero, String direction) {
         Position new_pos = directionStep(hero.getPosition(), direction);
         if (getCell(new_pos) == null) {
-            System.out.println("Outrange");
             return null;
         }
         if (!getCell(new_pos).isAccessible()) {
-            System.out.println("Wall");
             return null;
         } else {
             if (getCell(new_pos).hasHero()) {
@@ -170,7 +159,7 @@ public class WorldMap {
                     Position mon_pos = new Position(x, y + j);
                     if (getCell(mon_pos) != null) {
                         if (getCell(mon_pos).hasMonster()) {
-                            System.out.println("You must kill the enemy to move forward!");
+                            ColorPrint.error("You must kill the enemy to move forward!");
                             return null;
                         }
                     }
@@ -255,15 +244,7 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    // public boolean register(Hero h) {
-    //     if (Heroes.size() == 3) {
-    //         System.out.println("Already full");
-    //         return false;
-    //     }
-    //     Heroes.add(h);
-    //     return true;
-    // }
-
+    /**Generate a hero unit on the map in nexus*/
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
             System.out.println("Already full");
@@ -301,9 +282,6 @@ public class WorldMap {
         return Monsters;
     }
 
-    // public void register(Monster m) {
-    //     Monsters.add(m);
-    // }
 
     public void register(Monster m, Position pos) {
         if (Monsters.contains(m)) {
@@ -450,5 +428,4 @@ public class WorldMap {
         return re;
     }
 
-    /** Moved to TestMap */
 }

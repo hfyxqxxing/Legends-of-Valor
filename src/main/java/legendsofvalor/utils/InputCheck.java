@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class InputCheck {
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
+
+    /**For the possibility to customize the map with map elements*/
     public static double[] Probability_check(Scanner in){
         double[] result = new double[3];
         System.out.println("Set up your favored world with the probabilities!");
