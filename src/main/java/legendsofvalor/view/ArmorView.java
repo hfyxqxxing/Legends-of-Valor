@@ -18,6 +18,10 @@ public class ArmorView {
             }
             ColorPrint.green("Current Hero's Armor Inventory:");
             ColorPrint.plain(curHero.getInventory().getArmorString());
+            if (curHero.getInventory().getArmorString().equals("No armors in inventory")){
+                System.out.println();
+                return ;
+            }
             ColorPrint.query(
                     "Please enter [1] to add/replace the armor(limit 1), enter [2] to remove current hero's armor, or enter [0] to cancel and go back:");
             int comm = UserInput.getInstance().getChoice(0, 2);

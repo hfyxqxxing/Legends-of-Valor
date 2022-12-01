@@ -19,6 +19,10 @@ public class SpellView {
         }
         ColorPrint.green("Current Hero's Spell:\n");
         ColorPrint.plain(hero.getInventory().getSpellString());
+        if (hero.getInventory().getSpellString().equals("No spells in inventory")){
+            System.out.println();
+            return false;
+        }
         ArrayList<Spell> spellList = hero.getInventory().getAllSpell();
         ColorPrint.query("Please select a spell to attack, or enter [0] to cancel and go back:");
         int index = UserInput.getInstance().getChoice(0, spellList.size());

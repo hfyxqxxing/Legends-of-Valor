@@ -13,7 +13,8 @@ public class PotionView {
         while (true) {
             ColorPrint.green("Current Hero's Potion:\n");
             ColorPrint.plain(curHero.getInventory().getPotionString());
-            if (curHero.getInventory().isEmpty()){
+            if (curHero.getInventory().getPotionString().equals("No potions in inventory")){
+                System.out.println();
                 return false;
             }
             ColorPrint.query(

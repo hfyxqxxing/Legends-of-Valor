@@ -5,6 +5,7 @@ package legendsofvalor.character;
 
 import legendsofvalor.item.Armor;
 import legendsofvalor.utils.ColorPrint;
+import legendsofvalor.world.CellCave;
 import legendsofvalor.world.CellKoulou;
 import legendsofvalor.world.Position;
 import legendsofvalor.world.WorldMap;
@@ -190,6 +191,30 @@ public abstract class Hero extends Character {
             getAgility().increase(powerUp);
         } else if (boost.equals("Defense")) {
             getDefense().increase(powerUp);
+        }
+    }
+
+    public String getStrengthString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellKoulou) {
+            return getStrength().get() + "+" + (int) (getStrength().get() * 0.1);
+        } else {
+            return "" + getStrength().get();
+        }
+    }
+
+    public String getAgilityString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellCave) {
+            return getAgility().get() + "+" + (int) (getAgility().get() * 0.1);
+        } else {
+            return "" + getAgility().get();
+        }
+    }
+
+    public String getDexterityString() {
+        if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellCave) {
+            return getDexterity().get() + "+" + (int) (getDexterity().get() * 0.1);
+        } else {
+            return "" + getDexterity().get();
         }
     }
 
