@@ -53,6 +53,18 @@ public class GamePlatform {
         }
     }
 
+    private void afterRound() {
+        for (Hero hero : WorldMap.getInstance().getHeroes()) {
+            if (hero.getHP().get() <= 0) {
+                hero.getHP().set(hero.getLevel().get() * 100);
+                hero.getMP().set(hero.getLevel().get() * 100);
+            } else {
+                hero.getHP().set(hero.getHP().get() + hero.getLevel().get() * 10);
+                hero.getMP().set(hero.getMP().get() + hero.getLevel().get() * 10);
+            }
+        }
+    }
+
 
     public void startGame() {
         // print welcome message
@@ -83,7 +95,7 @@ public class GamePlatform {
                 generateMonsters();
             }
             // print the map
-            System.out.println(WorldMap.getInstance());
+            ColorPrint.plain(WorldMap.getInstance());
             // hero's turn
             ArrayList<Hero> heros = WorldMap.getInstance().getHeroes();
             for (int i = 0; i < heros.size(); i++) {
@@ -92,7 +104,7 @@ public class GamePlatform {
                 ColorPrint.green("[Hero] " + curHero.getName().get() + "'s turn");
                 HeroView.view(curHero);
                 // print the map
-                System.out.println(WorldMap.getInstance());
+                ColorPrint.plain(WorldMap.getInstance());
                 // check win
                 if ((gameResult = WorldMap.getInstance().checkWin()) != 0) {
                     break;
@@ -113,9 +125,11 @@ public class GamePlatform {
                     break;
                 }
             }
-            ColorPrint.plain("A round ends. Press enter to continue...");
+            ColorPrint.green("A round ends. Press enter to continue...");
+            afterRound();
             UserInput.getInstance().getNextline();
         }
+        ColorPrint.plain(WorldMap.getInstance());
         if (gameResult == 1) {
             ColorPrint.green("Congratulations! You have won the game!");
         } else {
