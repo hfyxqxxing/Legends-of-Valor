@@ -1,3 +1,6 @@
+/*
+ * This is the partent class of any inaccessible cell in the world map.
+ */
 package legendsofvalor.world;
 
 public abstract class InAccessible_Cell implements WorldCell {

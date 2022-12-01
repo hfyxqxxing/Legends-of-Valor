@@ -1,3 +1,6 @@
+/*
+ * Home cell for monsters
+ */
 package legendsofvalor.world;
 
 

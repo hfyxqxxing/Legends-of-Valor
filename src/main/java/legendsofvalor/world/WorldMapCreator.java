@@ -1,3 +1,6 @@
+/*
+ * The world map creator. The cells in the worldmap are created by a specific probability.
+ */
 package legendsofvalor.world;
 
 

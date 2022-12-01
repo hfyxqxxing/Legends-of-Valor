@@ -4,6 +4,6 @@
 
 package legendsofvalor.character;
 
-public class CharacterAttribute {
+public abstract class CharacterAttribute {
 
 }

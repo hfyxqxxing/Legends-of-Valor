@@ -1,10 +1,13 @@
+/*
+ * This is a parent class for all accessible cells in the world map.
+ * Including Plain, Bush, Cave, Koulou, and Nuxes.
+ */
 package legendsofvalor.world;
 
-import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 
-public abstract class AccessibleCell implements WorldCell, EffectToHero {
+public abstract class AccessibleCell implements WorldCell {
 
     protected char symbol;
     protected String name;
@@ -21,10 +24,6 @@ public abstract class AccessibleCell implements WorldCell, EffectToHero {
     @Override
     public String getName() {
         return name;
-    }
-
-    @Override
-    public void effect(Hero hero) {
     }
 
     @Override

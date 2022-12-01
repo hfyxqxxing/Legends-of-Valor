@@ -1,6 +1,8 @@
-package legendsofvalor.world;
+/*
+ * Koulou cell can boost hero's strength
+ */
 
-import legendsofvalor.character.Hero;
+package legendsofvalor.world;
 
 public class CellKoulou extends AccessibleCell {
         CellKoulou() {
@@ -8,9 +10,4 @@ public class CellKoulou extends AccessibleCell {
                 this.name = "Koulou";
         }
 
-
-        @Override
-        public void effect(Hero hero) {
-                // hero.getStrength().increase(20);
-        }
 }

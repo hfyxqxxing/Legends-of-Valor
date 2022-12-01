@@ -1,3 +1,6 @@
+/*
+ * This class automatic operate the monster to fight against the hero
+ */
 package legendsofvalor.utils;
 
 import java.util.ArrayList;

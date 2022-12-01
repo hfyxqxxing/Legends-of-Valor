@@ -1,3 +1,9 @@
+/*
+ * This is a singleton. It is widely used in whole game. Use WorldMap.getInstance() to get the instance.
+ * WorldMap knows the heros and monsters in the world.
+ * WorldMap is also responsible for the querying of movement of heros and monsters.
+ */
+
 package legendsofvalor.world;
 
 
@@ -239,7 +245,7 @@ public class WorldMap {
         Heroes = heroes;
     }
 
-    /**Generate a hero unit on the map in nexus*/
+    /** Generate a hero unit on the map in nexus */
     public boolean register(Hero h, Position position) {
         if (Heroes.size() == 3) {
             System.out.println("Already full");

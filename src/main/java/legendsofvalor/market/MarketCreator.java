@@ -13,7 +13,7 @@ public class MarketCreator {
     // random add items to market
     private static void addItems(Market market, ArrayList<? extends MarketItem> items) {
         int totalItemCount = items.size();
-        int itemCount = ThreadLocalRandom.current().nextInt(0, totalItemCount);
+        int itemCount = ThreadLocalRandom.current().nextInt((int) (totalItemCount * 0.4), totalItemCount);
         for (int i = 0; i < itemCount; i++) {
             while (true) {
                 int index = ThreadLocalRandom.current().nextInt(0, totalItemCount);

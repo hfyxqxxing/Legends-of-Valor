@@ -1,3 +1,9 @@
+/*
+ * When hero choose attack, it will be redirected to this view
+ * hero can choose the attack target and perform the attact.
+ * return false if attack is canceled
+ */
+
 package legendsofvalor.view;
 
 import java.util.ArrayList;

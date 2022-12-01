@@ -1,3 +1,7 @@
+/*
+ * Potion function to increase both HP and MP
+ * One potion may contains multiple potion funciton
+ */
 package legendsofvalor.item;
 
 import legendsofvalor.character.Hero;

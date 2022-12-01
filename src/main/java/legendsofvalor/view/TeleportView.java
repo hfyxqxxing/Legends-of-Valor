@@ -1,3 +1,8 @@
+/*
+ * This is the view of teleport. Hero can teleport to other hero here.
+ * return false if teleport is canceled.
+ */
+
 package legendsofvalor.view;
 
 import java.util.ArrayList;

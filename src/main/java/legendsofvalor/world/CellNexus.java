@@ -1,3 +1,8 @@
+/*
+ * Home cell for heroes. heros can buy items here
+ * each nexus should have a unique random generated market
+ */
+
 package legendsofvalor.world;
 
 

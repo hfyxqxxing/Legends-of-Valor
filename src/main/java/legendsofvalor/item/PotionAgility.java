@@ -1,3 +1,7 @@
+/*
+ * Potion function to increase agility
+ * One potion may contains multiple potion funciton
+ */
 package legendsofvalor.item;
 
 import legendsofvalor.character.Hero;

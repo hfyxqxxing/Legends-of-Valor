@@ -1,3 +1,6 @@
+/*
+ * This is Potion viw. Hero can use potion to increase their attributes here.
+ */
 package legendsofvalor.view;
 
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ public class PotionView {
         while (true) {
             ColorPrint.green("Current Hero's Potion:\n");
             ColorPrint.plain(curHero.getInventory().getPotionString());
-            if (curHero.getInventory().getPotionString().equals("No potions in inventory")){
+            if (curHero.getInventory().getPotionString().equals("No potions in inventory")) {
                 System.out.println();
                 return false;
             }

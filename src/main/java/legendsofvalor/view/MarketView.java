@@ -1,3 +1,7 @@
+/*
+ * This is the view of market. Hero can buy and sell items here.
+ * when finished, the hero will return to previous view
+ */
 package legendsofvalor.view;
 
 import legendsofvalor.character.Hero;
