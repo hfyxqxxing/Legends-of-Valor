@@ -128,7 +128,7 @@ public class TestMap {
         if (newone != null) {
             m.moveTo(h, newone);
         }
-        Position m_one = m.canMoveTo(monster);
+        Position m_one = m.canMoveDown(monster);
         if (m_one != null) {
             m.moveTo(monster, m_one);
         }

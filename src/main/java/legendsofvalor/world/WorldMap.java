@@ -126,17 +126,19 @@ public class WorldMap {
     }
 
     /** If there is a monster ahead of it, or the hero is in same line. It should moveto itself.(Staying) */
-    public Position canMoveTo(Monster monster) {
+    public Position canMoveDown(Monster monster) {
         Position new_pos = directionStep(monster.getPosition(), "Down");
         /** Only moves down, so it will not meet with the situation of wall or outrange */
         if (getAccessibleCell(new_pos).hasMonster()) {
-            System.out.println("Already a Monster here");
+            // System.out.println("Already a Monster here");
+            // Already a Monster here
             return monster.getPosition();
         }
         for (int j = -1; j < 2; j++) {
             Position temp = new Position(monster.getPosition().getX(), monster.getPosition().getY() + j);
-            if (getAccessibleCell(temp).hasHero()) {
-                System.out.println("Movement stopped by a hero");
+            if (getAccessibleCell(temp) != null && getAccessibleCell(temp).hasHero()) {
+                // System.out.println("Movement stopped by a hero");
+                // Movement stopped by a hero - Usually not possible
                 return monster.getPosition();
             }
         }
