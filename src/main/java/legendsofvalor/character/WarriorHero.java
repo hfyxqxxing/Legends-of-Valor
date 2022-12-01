@@ -14,6 +14,7 @@ public class WarriorHero extends Hero {
         super(name, hp, level, defense, strength, mp, dexterity, agility, gold, hands, experience, "Warrior");
     }
 
+    /**Level up with strength and agility*/
     protected void levelUp() {
         getLevel().increase();
         getHP().set(getLevel().get() * 100);

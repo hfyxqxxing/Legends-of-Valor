@@ -8,7 +8,7 @@ import java.util.Random;
 public class WorldMapCreator {
 
     public static WorldMap create() {
-        return WorldMapCreator.create(8, 8, 0.2, 0.3, 0.5, new Random());
+        return WorldMapCreator.create(8, 8, 0.2, 0.4, 0.6, new Random());
     }
 
     public static WorldMap create(int seed) {

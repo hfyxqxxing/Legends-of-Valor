@@ -44,6 +44,7 @@ public abstract class Hero extends Character {
         this(new Name(name), new HP(hp), new Level(level), new Defense(defense), new Strength(strength), new MP(mp), new Dexterity(dexterity), new Agility(agility), new Gold(gold), new Hand(hands), new Experience(experience), heroType);
     }
 
+    /**Getter and Setter functions-------------------------*/
     public void setRevivePosition(Position revivePosition) {
         this.revivePosition = revivePosition;
     }
@@ -153,6 +154,9 @@ public abstract class Hero extends Character {
         return (int) ((getWeaponDamage() + tmpStreangth) * 0.05);
     }
 
+    /**--------------------------------------------------------------*/
+
+    /**Levelup system*/
     public void checkLevelUp() {
         if (experience.get() >= getLevel().get() * 10) {
             ColorPrint.green(getName().get() + " has leveled up!");
@@ -163,6 +167,7 @@ public abstract class Hero extends Character {
 
     protected abstract void levelUp();
 
+    /**Normal Attack*/
     public String attack(Monster monster) {
         if (monster == null) {
             return "";
@@ -179,22 +184,8 @@ public abstract class Hero extends Character {
         return re;
     }
 
-    public void addBoost(String boost, int powerUp) {
-        if (boost.equals("Health")) {
-            getHP().increase(powerUp);
-        } else if (boost.equals("Strength")) {
-            getStrength().increase(powerUp);
-        } else if (boost.equals("Mana")) {
-            getMP().increase(powerUp);
-        } else if (boost.equals("Dexterity")) {
-            getDexterity().increase(powerUp);
-        } else if (boost.equals("Agility")) {
-            getAgility().increase(powerUp);
-        } else if (boost.equals("Defense")) {
-            getDefense().increase(powerUp);
-        }
-    }
 
+    /**Print messages-------------------------------------------*/
     public String getStrengthString() {
         if (getPosition() != null && WorldMap.getInstance().getCell(getPosition()) instanceof CellKoulou) {
             return getStrength().get() + "+" + (int) (getStrength().get() * 0.1);

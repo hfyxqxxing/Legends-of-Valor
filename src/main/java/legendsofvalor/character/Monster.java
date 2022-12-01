@@ -22,6 +22,7 @@ public class Monster extends Character {
         this.monsterType = monsterType;
     }
 
+    /**Getter and Setter--------------------------------------------------*/
     public Damage getDamage() {
         return damage;
     }
@@ -46,6 +47,7 @@ public class Monster extends Character {
         this.monsterType = monsterType;
     }
 
+    /**Normal Attack---------------------------------------------------*/
     public String attack(Hero hero) {
         if (hero.getAgility().isDodge()) {
             return this.getName().get() + " attack hero" + hero.getName().get() + ", but " + hero.getName().get() + " dodged the attack!";
@@ -62,6 +64,7 @@ public class Monster extends Character {
         return re;
     }
 
+    /**Print Messages-----------------------------------------------*/
     public String getHeader() {
         String re = String.format("%-25s %-10s %-10s %-10s %-10s %-10s %-8s", "[Type] Name", "Level", "HP", "Damage", "Defense", "Agility", "Position");
         return re;
