@@ -4,10 +4,11 @@
  */
 package legendsofvalor.world;
 
+import legendsofvalor.character.EffectToHero;
 import legendsofvalor.character.Hero;
 import legendsofvalor.character.Monster;
 
-public abstract class AccessibleCell implements WorldCell {
+public abstract class AccessibleCell implements WorldCell, EffectToHero {
 
     protected char symbol;
     protected String name;
